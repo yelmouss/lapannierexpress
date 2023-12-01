@@ -1,8 +1,4 @@
-/* 
-
-.sliderimg{
-  object-fit: contain;
-} */
+@import url("https://unpkg.com/leaflet@1.6.0/dist/leaflet.css");
 
 .MyRowCat{
   flex-wrap: nowrap;
@@ -14,4 +10,45 @@ height: 70px;
 width: 100%;
 object-fit: cover;
 
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #075e54;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 1;
+}
+
+.my-float {
+  margin-top: 7px;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background : #5fab01; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5fab01; 
 }
