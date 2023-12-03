@@ -15,7 +15,7 @@ function HomeWelcome() {
   return (
     <Container fluid>
       <Row xs={1} lg={2} md={2}>
-        <Col className='text-start p-5 sticky-top' lg={3} md={2} xs={12}>
+        <Col className='text-start p-5' lg={3} md={2} xs={12}>
           <hr />
           <h2>Grand Frais Rabat</h2>
           {MenuItems.map((item, index) => (
