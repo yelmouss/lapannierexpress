@@ -21,15 +21,15 @@ function HomeWelcome() {
           <hr /> */}
              <Row xs={2} lg={1} md={2} className='d-flex'>
           {MenuItems.map((item, index) => (
-            <div key={index}>
+            <Col key={index}  className='h-100'>
               <Link
-                className='mb-1 fs-5 btn bg-light text-success bg-opacity-75 w-100'
+                className='mb-1 fs-5 btn bg-light text-success bg-opacity-75 w-100 h-100 '
                 to={'#' + item.title}
                 onClick={() => scrollIntoView(index)}
               >
                 {item.title}
               </Link>
-            </div>
+            </Col>
           ))}
           </Row>
         </Col>
