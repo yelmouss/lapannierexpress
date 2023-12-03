@@ -8,7 +8,7 @@ import CustomScroll from 'react-custom-scroll';
 function SecondHeader() {
   return (
     <>
-      <Container className='nowrap'>
+      <Container className='nowrap col-11'>
       <CustomScroll >
         <Row className='MyRowCat'>
        
