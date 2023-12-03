@@ -66,7 +66,7 @@ function Footer({ dark, updateDark }) {
           >
             yelmouss.com
           </a>
-          <p>Made by Yassine Elmouss. All rights reserved.</p>
+          <p>Made by Imad Jouiet. All rights reserved.</p>
          
         </div>     
       </footer>

@@ -52,3 +52,7 @@ object-fit: cover;
 ::-webkit-scrollbar-thumb:hover {
   background: #5fab01; 
 }
+
+li{
+  list-style: none;
+}
