@@ -37,9 +37,9 @@ function HomeWelcome() {
         
             {MenuItems.map((item, index) => (
               <div key={index} id={index}>
-               
+                  <hr />
                 <h2>{item.title}</h2>
-                <hr />
+             
                 <Row lg={6} md={4} xs={3}>
                   {filteredProducts(item.title).map((product, pIndex) => (
                     <Col key={pIndex}>
