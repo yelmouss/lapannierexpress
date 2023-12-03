@@ -64,10 +64,13 @@ function Footer({ dark, updateDark }) {
             </div>
 
             <div className="col-md-4 col-lg-6  rounded">
+            <hr />
               <h6 className="text-uppercase font-weight-bold  rounded">
                 Infos Contact
               </h6>
-              <hr />
+
+              <br />
+           
               <div className="text-start">
                 <p>
                   <i className="fas fa-envelope mr-3"></i> blabla@blabla.com
