@@ -1,39 +1,71 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Container } from "react-bootstrap";
-
+import { Container, Button } from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
 const position = [33.991980191627185, -6.874611381541911];
+
 function Footer({ dark, updateDark }) {
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  const scrollIntoTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleScroll = () => {
+    // Show the "Scroll to Top" button when scrolling down
+    const scrollY = window.scrollY;
+    setShowScrollButton(scrollY > 100);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <>
-      <footer
-        className={`footer fw-bold p-5  ${
-          dark ? "bg-dark bg-opacity-75 text-light " : "bg-light bg-opacity-75 text-dark"
-        }`}
+      {/* Scroll to Top Button */}
+      <Button
+        variant="success"
+        className="scroll-top-button"
+        onClick={scrollIntoTop}
       >
-  
-       
+       ^
+      </Button>
+      <footer
+        className={`footer fw-bold p-5  ${dark
+            ? "bg-dark bg-opacity-25 text-light "
+            : "bg-dark bg-opacity-50 text-light"
+          }`}
+      >
         <div className="container-fluid">
           <div className="row d-flex align-items-center justify-content-center">
             <div className="col-md-6 col-lg-6 col-xl-6">
-            <Container>
-                <MapContainer center={position} zoom={13} scrollWheelZoom={false} style={{height: "250px"}}>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={position}>
-                        <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                    </Marker>
+              <Container>
+                <MapContainer
+                  center={position}
+                  zoom={13}
+                  scrollWheelZoom={false}
+                  style={{ height: "250px" }}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={position}>
+                    <Popup>
+                      A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                  </Marker>
                 </MapContainer>
-            </Container>
+              </Container>
             </div>
-        
-            <div className="col-md-4 col-lg-6  rounded ">
+
+            <div className="col-md-4 col-lg-6  rounded">
               <h6 className="text-uppercase font-weight-bold  rounded">
-               Infos Contact
+                Infos Contact
               </h6>
               <hr />
               <div className="text-start">
@@ -57,7 +89,6 @@ function Footer({ dark, updateDark }) {
         <hr />
         <div className=" text-center fw-bold">
           <p>   © {new Date().getFullYear()} Copyright :{" "}</p>
-       
           <a
             className="text-warning"
             target={"_blank"}
@@ -67,19 +98,19 @@ function Footer({ dark, updateDark }) {
             yelmouss.com
           </a>
           <p>Made by Imad Jouiet. All rights reserved.</p>
-         
-        </div>     
+        </div>
       </footer>
-      <a
-          href="https://wa.me/212612865681"
-          className="float"
-          target="_blank"
-          rel="noreferrer"
-        >
 
-          <FaWhatsapp  className="my-float"/>
-         
-        </a>
+      <a
+        href="https://wa.me/212612865681"
+        className="float"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FaWhatsapp className="my-float" />
+      </a>
+
+
     </>
   );
 }

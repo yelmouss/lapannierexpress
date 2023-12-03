@@ -15,13 +15,15 @@ function HomeWelcome() {
   return (
     <Container fluid>
       <Row xs={1} lg={2} md={2}>
-        <Col className='text-start p-5' lg={3} md={2} xs={12}>
-          <hr />
-          <h2>Grand Frais Rabat</h2>
+        <Col className='text-start p-5 bg-dark  bg-opacity-25' lg={3} md={2} xs={12}>
+          
+          {/* <h2>Grand Frais Rabat</h2>
+          <hr /> */}
+             <Row xs={2} lg={1} md={2} className='d-flex'>
           {MenuItems.map((item, index) => (
             <div key={index}>
               <Link
-                className='mb-1 fs-5 btn bg-success text-light bg-opacity-75 w-100'
+                className='mb-1 fs-5 btn bg-light text-success bg-opacity-75 w-100'
                 to={'#' + item.title}
                 onClick={() => scrollIntoView(index)}
               >
@@ -29,14 +31,16 @@ function HomeWelcome() {
               </Link>
             </div>
           ))}
+          </Row>
         </Col>
-        <Col>
-          <ul>
+        <Col lg={8} className=' p-5'>
+        
             {MenuItems.map((item, index) => (
-              <li key={index} id={index}>
-                <hr />
+              <div key={index} id={index}>
+               
                 <h2>{item.title}</h2>
-                <Row lg={4} md={4} xs={3}>
+                <hr />
+                <Row lg={6} md={4} xs={3}>
                   {filteredProducts(item.title).map((product, pIndex) => (
                     <Col key={pIndex}>
                       <Card className="text-center mb-2" style={{ width: '100%' }}>
@@ -46,9 +50,9 @@ function HomeWelcome() {
                     </Col>
                   ))}
                 </Row>
-              </li>
+              </div>
             ))}
-          </ul>
+        
         </Col>
       </Row>
     </Container>
