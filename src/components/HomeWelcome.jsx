@@ -1,10 +1,40 @@
-import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { MenuItems } from '../datas/HomeFilters';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { HomeProduct } from '../datas/HomeProducts';
+import { MenuItems } from '../datas/HomeFilters';
+import ProductCart from './ProductCart';
+import { useCartLikesContext } from './CartLikesContext';
 
 function HomeWelcome() {
+    const { likes, setLikes, cart, setCart } = useCartLikesContext();
+    const [apiData, setApiData] = useState([]);
+    const [dataLoaded, setDataLoaded] = useState(false);
+
+    useEffect(() => {
+        // Fetch data from the API on component mount.
+        fetch(process.env.REACT_APP_APIURL)
+            .then(response => response.json())
+            .then(data => {
+                // Initialize likes state with values from local storage or false for each product
+                const likesFromStorage = JSON.parse(localStorage.getItem("likes")) || {};
+                const initialLikes = {};
+                data.forEach(product => {
+                    initialLikes[product._id] = likesFromStorage[product._id] || false;
+                });
+
+                // Initialize cart state with values from local storage or an empty array
+                const cartFromStorage = JSON.parse(localStorage.getItem("cart")) || [];
+                setLikes(initialLikes);
+                setApiData(data);
+                setCart(cartFromStorage);
+                setDataLoaded(true);
+            })
+            .catch(error => {
+                console.error('Error fetching data from API:', error);
+                setDataLoaded(true);
+            });
+    }, []);
+
     const scrollIntoView = (index) => {
         const element = document.getElementById(index);
         if (element) {
@@ -12,16 +42,72 @@ function HomeWelcome() {
         }
     };
 
+    const filteredProducts = (filter) => {
+        return apiData.filter((product) => product.homeFilter === filter);
+    };
+
+    const handleLike = (productId) => {
+        // Toggle like status for the given product
+        setLikes(prevLikes => ({
+            ...prevLikes,
+            [productId]: !prevLikes[productId],
+        }));
+
+        // Update local storage with the new likes
+        localStorage.setItem("likes", JSON.stringify({
+            ...likes,
+            [productId]: !likes[productId],
+        }));
+    };
+
+    const updateCart = (newCart) => {
+        setCart(newCart);
+        localStorage.setItem("cart", JSON.stringify(newCart));
+    };
+
+    const handleAddToCart = (item) => {
+        const existingItem = cart.find((cartItem) => cartItem.id === item._id);
+
+        if (existingItem) {
+            const newCart = cart.map((cartItem) =>
+                cartItem.id === item._id
+                    ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                    : cartItem
+            );
+            updateCart(newCart);
+        } else {
+            const newCart = [
+                ...cart,
+                { id: item._id, name: item.name, price: item.price, quantity: 1 },
+            ];
+            updateCart(newCart);
+        }
+    };
+
+    const handleRemoveFromCart = (item) => {
+        const existingItem = cart.find((cartItem) => cartItem.id === item._id);
+        if (existingItem.quantity > 1) {
+            const newCart = cart.map((cartItem) =>
+                cartItem.id === item._id
+                    ? { ...cartItem, quantity: cartItem.quantity - 1 }
+                    : cartItem
+            );
+            updateCart(newCart);
+        } else {
+            const newCart = cart.filter((cartItem) => cartItem.id !== item._id);
+            updateCart(newCart);
+        }
+    };
+
     return (
         <Container fluid>
-            <Row xs={1} lg={2} md={2}>
-                <Col className='text-start p-5 bg-dark  bg-opacity-25' lg={3} md={2} xs={12}>
-
-                    <Row xs={2} lg={1} md={2} className='d-flex align-items-stretch'>
+            <Row xs={1} lg={2} md={1}>
+                <Col className='text-start p-3  bg-svg' lg={3} md={4} xs={12}>
+                    <Row xs={2} lg={1} md={1} className='d-flex align-items-stretch'>
                         {MenuItems.map((item, index) => (
                             <Col key={index} className='mb-1 d-flex'>
                                 <Link
-                                    className='mb-1 fs-5 btn bg-light text-success bg-opacity-75 w-100 h-100 d-flex align-items-center justify-content-center'
+                                    className='mb-1 button-53 '
                                     to={'#' + item.title}
                                     onClick={() => scrollIntoView(index)}
                                 >
@@ -30,37 +116,36 @@ function HomeWelcome() {
                             </Col>
                         ))}
                     </Row>
-
                 </Col>
-                <Col lg={8} className=' p-5'>
-
-                    {MenuItems.map((item, index) => (
-                        <div key={index} id={index}>
-                            <hr />
-                            <h2>{item.title}</h2>
-
-                            <Row lg={6} md={4} xs={3}>
-                                {filteredProducts(item.title).map((product, pIndex) => (
-                                    <Col key={pIndex}>
-                                        <Card className="text-center mb-2" style={{ width: '100%' }}>
-                                            <Card.Img variant="top" src={product.image} />
-                                            <Card.Footer className="text-muted text-truncate">{product.product}</Card.Footer>
-                                        </Card>
-                                    </Col>
-                                ))}
-                            </Row>
-                        </div>
-                    ))}
-
+                <Col lg={8} className='p-5'>
+                    {dataLoaded && (
+                        <>
+                            {MenuItems.map((item, index) => (
+                                <div key={index} id={index} className='p-1'>
+                                    <hr />
+                                    <h2>{item.title}</h2>
+                                    <br />
+                                    <Row lg={4} md={4} xs={1}>
+                                        {filteredProducts(item.title).map((product, pIndex) => (
+                                            <ProductCart
+                                                key={pIndex + product.name}
+                                                product={product}
+                                                likes={likes}
+                                                handleLike={handleLike}
+                                                handleRemoveFromCart={handleRemoveFromCart}
+                                                handleAddToCart={handleAddToCart}
+                                                cart={cart}
+                                            />
+                                        ))}
+                                    </Row>
+                                </div>
+                            ))}
+                        </>
+                    )}
                 </Col>
             </Row>
         </Container>
     );
 }
-
-// Function to filter products based on homeFilter
-const filteredProducts = (filter) => {
-    return HomeProduct.filter((product) => product.homeFilter === filter);
-};
 
 export default HomeWelcome;

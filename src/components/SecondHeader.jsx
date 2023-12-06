@@ -13,7 +13,7 @@ function SecondHeader() {
         <Row className='MyRowCat'>
        
           {Cat.map((item, index) => (
-            <Col className='text-nowrap'>
+            <Col key={index} className='text-nowrap'>
               <Categories key={index} className='text-nowrap' title={item.title} imageUrl={item.ImageUrl} />
             </Col>
           ))}
