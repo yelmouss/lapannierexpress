@@ -15,7 +15,8 @@ function Cart() {
             const fetchCartItemDetails = async () => {
                 try {
                     const itemDetailsPromises = storedCart.map(async (cartItem) => {
-                        const response = await fetch(`http://localhost:8000/api/${cartItem.id}`);
+                        // process.env.REACT_APP_APIURL
+                        const response = await fetch(`${process.env.REACT_APP_APIURL}/${cartItem.id}`);
                         const productDetails = await response.json();
                         return {
                             ...cartItem,
