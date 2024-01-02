@@ -13,7 +13,7 @@ function Offer() {
 
   useEffect(() => {
     // Fetch data from the API on component mount.
-    fetch(process.env.REACT_APP_APIURL)
+    fetch(process.env.REACT_APP_APIURL+'categories/get')
       .then((response) => response.json())
       .then((data) => {
         // Initialize likes state with values from local storage or false for each product

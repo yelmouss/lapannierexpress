@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { MenuItems } from '../datas/HomeFilters';
+import { Cat } from '../datas/Categories';
 import ProductCart from './ProductCart';
 import { useCartLikesContext } from './CartLikesContext';
 
@@ -12,7 +12,9 @@ function HomeWelcome() {
 
     useEffect(() => {
         // Fetch data from the API on component mount.
-        fetch(process.env.REACT_APP_APIURL)
+        // http://localhost:8000/api/categories/get
+        fetch(process.env.REACT_APP_APIURL+"categories/get")
+        // fetch(process.env.REACT_APP_APIURL+"categories/get")
             .then(response => response.json())
             .then(data => {
                 // Initialize likes state with values from local storage or false for each product
@@ -43,7 +45,7 @@ function HomeWelcome() {
     };
 
     const filteredProducts = (filter) => {
-        return apiData.filter((product) => product.homeFilter === filter);
+        return apiData.filter((product) => product.categorie === filter);
     };
 
     const handleLike = (productId) => {
@@ -98,55 +100,58 @@ function HomeWelcome() {
             updateCart(newCart);
         }
     };
+ // Filtrer les catégories en fonction des produits disponibles
+ const categoriesWithProducts = Cat.filter((category) =>
+ apiData.some((product) => product.categorie === category.title)
+);
 
-    return (
-        <Container fluid>
-            <Row xs={1} lg={2} md={1}>
-                <Col className='text-start p-3  ' lg={3} md={4} xs={12}>
-                    <Row xs={2} lg={1} md={1} className='d-flex align-items-stretch'>
-                        {MenuItems.map((item, index) => (
-                            <Col key={index} className='mb-1 d-flex'>
-                                <Link
-                                    className='mb-1 button-53 '
-                                    to={'#' + item.title}
-                                    onClick={() => scrollIntoView(index)}
-                                >
-                                    {item.title}
-                                </Link>
-                            </Col>
+return (
+    <Container fluid>
+        <Row xs={1} lg={2} md={1}>
+            <Col className='text-start p-3  ' lg={3} md={4} xs={12}>
+                <Row xs={2} lg={1} md={1} className='d-flex align-items-stretch'>
+                    {categoriesWithProducts.map((item, index) => (
+                        <Col key={index} className='mb-1 d-flex'>
+                            <Link
+                                className='mb-1 button-53 '
+                                to={'#' + item.title}
+                                onClick={() => scrollIntoView(index)}
+                            >
+                                {item.title}
+                            </Link>
+                        </Col>
+                    ))}
+                </Row>
+            </Col>
+            <Col lg={8} md={6} className='p-5'>
+                {dataLoaded && (
+                    <>
+                        {categoriesWithProducts.map((item, index) => (
+                            <div key={index} id={index} className='p-1'>
+                                <hr />
+                                <h2 className='fw-bold fs-2'>{item.title}</h2>
+                                <br />
+                                <Row lg={4} md={3} xs={1} className='p-2'>
+                                    {filteredProducts(item.title).map((product, pIndex) => (
+                                        <ProductCart
+                                            key={pIndex + product.name}
+                                            product={product}
+                                            likes={likes}
+                                            handleLike={handleLike}
+                                            handleRemoveFromCart={handleRemoveFromCart}
+                                            handleAddToCart={handleAddToCart}
+                                            cart={cart}
+                                        />
+                                    ))}
+                                </Row>
+                            </div>
                         ))}
-                    </Row>
-                </Col>
-                <Col lg={8} md={6} className='p-5'>
-                    {dataLoaded && (
-                        <>
-                            {MenuItems.map((item, index) => (
-                                <div key={index} id={index} className='p-1'>
-                                    <hr />
-                                    <h2 className='fw-bold fs-2'>{item.title}</h2>
-                                    <br />
-                                    <Row lg={4} md={3} xs={1} className='p-2'>
-                                     
-                                        {filteredProducts(item.title).map((product, pIndex) => (
-                                            <ProductCart
-                                                key={pIndex + product.name}
-                                                product={product}
-                                                likes={likes}
-                                                handleLike={handleLike}
-                                                handleRemoveFromCart={handleRemoveFromCart}
-                                                handleAddToCart={handleAddToCart}
-                                                cart={cart}
-                                            />
-                                        ))}
-                                    </Row>
-                                </div>
-                            ))}
-                        </>
-                    )}
-                </Col>
-            </Row>
-        </Container>
-    );
+                    </>
+                )}
+            </Col>
+        </Row>
+    </Container>
+);
 }
 
 export default HomeWelcome;

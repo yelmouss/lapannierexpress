@@ -1,15 +1,15 @@
-// ProductForm.js
+
 
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { MenuItems } from '../datas/HomeFilters';
+import { Cat } from '../datas/Categories';
 
-const ProductForm = ({ onAddProduct }) => {
+const ProductFormCategory = ({ onAddProduct }) => {
     const [formData, setFormData] = useState({
         name: '',
         prixUnite: '',
         Unite: '',
-        homeFilter: '',
+        categorie: '',
         prixKilo: '',
         imageFile: null,
     });
@@ -26,13 +26,13 @@ const ProductForm = ({ onAddProduct }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const { name, prixUnite, Unite, homeFilter, prixKilo, imageFile } = formData;
+        const { name, prixUnite, Unite, categorie, prixKilo, imageFile } = formData;
 
         const formDataToSend = new FormData();
         formDataToSend.append('name', name);
         formDataToSend.append('prixUnite', prixUnite);
         formDataToSend.append('Unite', Unite);
-        formDataToSend.append('homeFilter', homeFilter);
+        formDataToSend.append('categorie', categorie);
         formDataToSend.append('prixKilo', prixKilo);
         formDataToSend.append('image', imageFile);
 
@@ -42,7 +42,7 @@ const ProductForm = ({ onAddProduct }) => {
     return (
         <Container>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='card p-5'>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Nom du produit:</label>
                     <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="form-control" required />
@@ -59,17 +59,17 @@ const ProductForm = ({ onAddProduct }) => {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="homeFilter" className="form-label">Filtre de la maison:</label>
+                    <label htmlFor="categorie" className="form-label">Filtre de la maison:</label>
                     <select
-                        id="homeFilter"
-                        name="homeFilter"
-                        value={formData.homeFilter}
+                        id="categorie"
+                        name="categorie"
+                        value={formData.categorie}
                         onChange={handleChange}
                         className="form-select"
                         required
                     >
-                        <option value="" disabled>Select home filter</option>
-                        {MenuItems.map((item) => (
+                        <option value="" disabled>Select category filter</option>
+                        {Cat.map((item) => (
                             <option key={item.id} value={item.title}>{item.title}</option>
                         ))}
                     </select>
@@ -85,11 +85,11 @@ const ProductForm = ({ onAddProduct }) => {
                     <input type="file" id="image" name="image" onChange={handleImageChange} className="form-control" required />
                 </div>
                 
-                <button type="submit" className="btn btn-primary">Ajouter le produit</button>
+                <button type="submit" className="btn btn-success">Ajouter le produit</button>
             </form>
         </Container>
 
     );
 };
 
-export default ProductForm;
+export default ProductFormCategory;

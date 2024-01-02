@@ -12,12 +12,12 @@ function Header() {
 
     useEffect(() => {
         // Fonction pour mettre à jour les compteurs
-        const updateCounts = (event) => {       
-            const cartCount = event ? event.detail.cartCount || 0 : 0;          
+        const updateCounts = (event) => {
+            const cartCount = event ? event.detail.cartCount || 0 : 0;
             setCartCount(cartCount);
         };
 
-  
+
         document.addEventListener('updateCartCount', updateCounts);
 
         // Mettre à jour les compteurs au montage initial
@@ -33,13 +33,16 @@ function Header() {
     return (
         <Navbar expand="lg" className="bg-success text-light" variant="dark" sticky="top">
             <Container className="text-light">
-                <Navbar.Brand href="/">
-                    <CiHome className="fs-1" />
-                </Navbar.Brand>
+                <Nav className="me-auto">
+                    <NavLink to={'/'} className={'nav-link fw-bold ml-2'}>
+                        <CiHome className="fs-1" />
+                    </NavLink>
+
+                </Nav>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink to={'/'} className={'nav-link fw-bold ml-2'}>
+                        <NavLink to={'/Suivi'} className={'nav-link fw-bold ml-2'}>
                             / Suivi de commande
                         </NavLink>
                         <NavLink to={'/LivraisonMap'} className={'nav-link fw-bold ml-2'}>
@@ -60,11 +63,11 @@ function Header() {
                         </InputGroup>
 
                         <NavLink to={'/'} className={'nav-link  fw-bold ml-2 position-relative'}>
-                            <CiHeart className='fs-2' />                           
+                            <CiHeart className='fs-2' />
                         </NavLink>
 
                         <NavLink to={'cart'} className={'nav-link  fw-bold ml-2 position-relative'}>
-                            <CiShoppingCart  className='fs-2' /> 
+                            <CiShoppingCart className='fs-2' />
                             {cartCount > 0 && <span className="badge bg-danger rounded-pill  position-absolute top-2 start-100 translate-middle">
                                 {cartCount}
                             </span>}
