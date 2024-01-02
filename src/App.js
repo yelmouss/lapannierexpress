@@ -12,11 +12,12 @@ import Offer from './components/Offer';
 import Font from 'react-font'
 import { CartLikesProvider } from './components/CartLikesContext';
 import Cart from './components/Cart';
+import ErrorNotFound from './components/ErrorNotFound ';
 function App() {
   return (
     <BrowserRouter >
      <CartLikesProvider>
-      <Font family='Montserrat'>
+      <Font family='Marmelad'>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -24,6 +25,7 @@ function App() {
         <Route path='/LivraisonMap' element={<MapLivraison />} />
         <Route path='/Cart' element={<Cart />} />
         <Route path='/offre/:id' element={<Offer />} />
+        <Route path="*" element={<ErrorNotFound />} />
       </Routes>
       <Footer />
       </Font>

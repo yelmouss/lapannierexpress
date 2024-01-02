@@ -1,12 +1,12 @@
 import React from 'react'
-import { MapContainer, TileLayer, Marker, Popup, LayerGroup, Circle } from "react-leaflet";
+import { MapContainer, TileLayer, LayerGroup, Circle, Marker, Popup } from "react-leaflet";
 import { Container, Button } from "react-bootstrap";
+// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-
-const fillBlueOptions = { fillColor: 'blue' }
-const fillRedOptions = { fillColor: 'red' }
+// const fillBlueOptions = { fillColor: 'blue' }
+// const fillRedOptions = { fillColor: 'red' }
 const greenOptions = { color: 'green', fillColor: 'green' }
-const purpleOptions = { color: 'purple' }
+// const purpleOptions = { color: 'purple' }
 const position = [ 34.020882, -6.841650];
 
 function MapLivraison() {
@@ -25,11 +25,11 @@ function MapLivraison() {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {/* <Marker position={position}>
+                <Marker position={position}>
                     <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
+                    Rachaaa. <br /> je t'aime
                     </Popup>
-                </Marker> */}
+                  </Marker>
 
                 <LayerGroup>
                     <Circle

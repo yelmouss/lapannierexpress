@@ -120,7 +120,7 @@ function Offer() {
   };
 
   return (
-    <Container fluid className='bg-svg'>
+    <Container fluid >
       <Row className=" p-5">
         <Col md={6} className='' >
           <Image src={offre.imageUrl} alt={offre.name} fluid className='OfferImage' />

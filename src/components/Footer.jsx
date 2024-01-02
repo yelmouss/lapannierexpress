@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Container, Button } from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
 import { useEffect, useState } from "react";
-
+import { FaArrowAltCircleUp } from "react-icons/fa";
 const position = [33.991980191627185, -6.874611381541911];
 
 function Footer({ dark, updateDark }) {
@@ -29,15 +29,15 @@ function Footer({ dark, updateDark }) {
       {/* Scroll to Top Button */}
       <Button
         variant="success"
-        className="scroll-top-button"
+        className="scroll-top-button d-flex align-items-center  "
         onClick={scrollIntoTop}
       >
-       ^
+       <FaArrowAltCircleUp />
       </Button>
       <footer
         className={`footer fw-bold p-5  ${dark
-            ? "bg-dark bg-opacity-25 text-light "
-            : "bg-dark bg-opacity-50 text-light"
+            ? "bg-light bg-opacity-25 text-light "
+            : "bg-black bg-opacity-25  text-success"
           }`}
       >
         <div className="container-fluid">
@@ -90,7 +90,7 @@ function Footer({ dark, updateDark }) {
           </div>
         </div>
         <hr />
-        <div className=" text-center fw-bold">
+        <div className=" text-center fw-bold bg-black p-2 bg-opacity-50 text-light">
           <p>   © {new Date().getFullYear()} Copyright :{" "}</p>
           <a
             className="text-warning"
@@ -105,7 +105,7 @@ function Footer({ dark, updateDark }) {
       </footer>
 
       <a
-        href="https://wa.me/212612865681"
+        href="https://wa.me/212612753603"
         className="float"
         target="_blank"
         rel="noreferrer"

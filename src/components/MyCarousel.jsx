@@ -24,32 +24,30 @@ function MyCarousel() {
     const imageStyle = ` ${isMobile ? '' : '150px'} `;
 
     return (
-        <Carousel data-bs-theme="dark" className="sticky" controls={false} indicators={false}>
+
+        <><Carousel className="" controls={false} indicators={false}>
             <Carousel.Item>
                 <img
                     className={imageClassName}
-                    src={LeProd}    
-                    style={{height: imageStyle}}               
-                    alt="First slide"
-                />
+                    src={LeProd}
+                    style={{ height: imageStyle }}
+                    alt="First slide" />
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className={imageClassName}
-                    src={Livraison} 
-                    style={{height: imageStyle}}                     
-                    alt="Second slide"
-                />
+                    src={Livraison}
+                    style={{ height: imageStyle }}
+                    alt="Second slide" />
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className={imageClassName}
                     src={Panier}
-                    style={{height: imageStyle}}   
-                    alt="Third slide"
-                />
+                    style={{ height: imageStyle }}
+                    alt="Third slide" />
             </Carousel.Item>
-        </Carousel>
+        </Carousel></>
     );
 }
 

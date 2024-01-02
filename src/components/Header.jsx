@@ -65,7 +65,7 @@ function Header() {
 
                         <NavLink to={'cart'} className={'nav-link  fw-bold ml-2 position-relative'}>
                             <CiShoppingCart  className='fs-2' /> 
-                            {cartCount > 0 && <span className="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                            {cartCount > 0 && <span className="badge bg-danger rounded-pill  position-absolute top-2 start-100 translate-middle">
                                 {cartCount}
                             </span>}
                         </NavLink>

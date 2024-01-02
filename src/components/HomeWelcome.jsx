@@ -102,7 +102,7 @@ function HomeWelcome() {
     return (
         <Container fluid>
             <Row xs={1} lg={2} md={1}>
-                <Col className='text-start p-3  bg-svg' lg={3} md={4} xs={12}>
+                <Col className='text-start p-3  ' lg={3} md={4} xs={12}>
                     <Row xs={2} lg={1} md={1} className='d-flex align-items-stretch'>
                         {MenuItems.map((item, index) => (
                             <Col key={index} className='mb-1 d-flex'>
@@ -117,15 +117,16 @@ function HomeWelcome() {
                         ))}
                     </Row>
                 </Col>
-                <Col lg={8} className='p-5'>
+                <Col lg={8} md={6} className='p-5'>
                     {dataLoaded && (
                         <>
                             {MenuItems.map((item, index) => (
                                 <div key={index} id={index} className='p-1'>
                                     <hr />
-                                    <h2>{item.title}</h2>
+                                    <h2 className='fw-bold fs-2'>{item.title}</h2>
                                     <br />
-                                    <Row lg={4} md={4} xs={1}>
+                                    <Row lg={4} md={3} xs={1} className='p-2'>
+                                     
                                         {filteredProducts(item.title).map((product, pIndex) => (
                                             <ProductCart
                                                 key={pIndex + product.name}

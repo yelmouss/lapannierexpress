@@ -30,11 +30,11 @@ export const Cat = [
         title: 'Poissonnerie',
         ImageUrl: 'https://iod.keplrstatic.com/api/ar_1,c_crop,g_north/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/PoissonsDAURADEbig.jpg'
     },
-    {
-        id: 7,
-        title: 'Crèmerie',
-        ImageUrl: 'https://iod.keplrstatic.com/api/ar_1,c_crop,g_north/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/CremerieBEURREbig.jpg'
-    },
+    // {
+    //     id: 7,
+    //     title: 'Crèmerie',
+    //     ImageUrl: 'https://iod.keplrstatic.com/api/ar_1,c_crop,g_north/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/CremerieBEURREbig.jpg'
+    // },
     {
         id: 8,
         title: 'Fromagerie',

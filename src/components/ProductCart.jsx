@@ -1,6 +1,6 @@
 // ProductCard.jsx
 import React from 'react';
-import { Card, Col, Button, Row } from 'react-bootstrap';
+import { Card, Col, Button, Row, Badge } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import { BsFillSuitHeartFill, BsSuitHeart } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
@@ -13,10 +13,19 @@ const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleA
         <Col key={product._id}>
             <Card className="text-center mb-2 shadow-lg" style={{ width: '100%' }}>
                 <NavLink to={'/offre/' + product._id} className={'nav-link'}>
+                {/* <Badge bg="secondary">Propotion -30%</Badge> */}
                     <Card.Img variant="top" src={product.imageUrl} style={{ width: '100%', height: '150px', objectFit: 'cover' }} />
                     <Card.Footer className="text-muted text-truncate">{product.name}</Card.Footer>
+                   
                 </NavLink>
+                {itemQuantity > 0 && ( 
+
+                <Card.Footer className="text-muted text-truncate"> درهم  - {product.prixUnite} - MAD</Card.Footer>
+
+                )}
                 <Card.Footer className="text-muted">
+
+
                     {itemQuantity > 0 && (
                         <Row className="align-items-center">
                             <Col lg={12}> {itemQuantity} au prix de {(itemQuantity * product.prixUnite).toFixed(2)} Dhs</Col>
@@ -34,6 +43,8 @@ const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleA
                             </Col>
                         </Row>
                     )}
+
+                     <Card.Footer className="text-muted text-truncate"> درهم  - {product.prixUnite} - MAD</Card.Footer>
 
                     {!itemQuantity && (
                         <Row className="align-items-center fs-4">
