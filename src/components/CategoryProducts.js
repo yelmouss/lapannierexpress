@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import ProductCart from './ProductCart'; // Import ProductCard component
+import ProductCart from './SubComponents/ProductCart'; // Import ProductCard component
 import { useCartLikesContext } from './CartLikesContext';
 
 const CategoryProducts = () => {
+  document.title = 'Coup de Food - Store'
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
   const { likes, setLikes, cart, setCart } = useCartLikesContext();
@@ -13,7 +14,7 @@ const CategoryProducts = () => {
   useEffect(() => {
     const fetchProductsByCategory = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/categories/get`);
+        const response = await axios.get(`${process.env.REACT_APP_APIURL}categories/get`);
         // Filtrer les produits par catégorie
         const filteredProducts = response.data.filter(
           (product) => product.categorie === categoryName
@@ -83,7 +84,7 @@ const CategoryProducts = () => {
   };
 
   return (
-    <div className='container p-5'>
+    <div className='container p-5  vh-100'>
       <h2 className='text-center'>Products in Category: {categoryName}</h2>
       <hr />
       {loading ? (

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Cat } from '../datas/Categories';
+import { Cat } from '../../datas/Categories';
 import ProductCart from './ProductCart';
-import { useCartLikesContext } from './CartLikesContext';
+import { useCartLikesContext } from '../CartLikesContext';
+import Swal from 'sweetalert2'; // Import SweetAlert
 
 function HomeWelcome() {
     const { likes, setLikes, cart, setCart } = useCartLikesContext();
@@ -60,6 +61,16 @@ function HomeWelcome() {
             ...likes,
             [productId]: !likes[productId],
         }));
+          // Show SweetAlert when a product is liked
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Like Done",
+            showConfirmButton: false,
+            timer: 1500,
+            customClass: 'small-swal', // Define a custom class for the popup
+            
+          });
     };
 
     const updateCart = (newCart) => {
@@ -77,12 +88,22 @@ function HomeWelcome() {
                     : cartItem
             );
             updateCart(newCart);
+            
         } else {
             const newCart = [
                 ...cart,
                 { id: item._id, name: item.name, price: item.price, quantity: 1 },
             ];
             updateCart(newCart);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Produit Ajouté au panier",
+                showConfirmButton: false,
+                timer: 1500,
+                customClass: 'small-swal', // Define a custom class for the popup
+                
+              });
         }
     };
 
@@ -108,12 +129,12 @@ function HomeWelcome() {
 return (
     <Container fluid>
         <Row xs={1} lg={2} md={1}>
-            <Col className='text-start p-3  ' lg={3} md={4} xs={12}>
+            <Col className='text-start p-3 mt-5 ' lg={3} md={4} xs={12}>
                 <Row xs={2} lg={1} md={1} className='d-flex align-items-stretch'>
                     {categoriesWithProducts.map((item, index) => (
                         <Col key={index} className='mb-1 d-flex'>
                             <Link
-                                className='mb-1 button-53 '
+                                className='mb-1 button-53 myseeetext '
                                 to={'#' + item.title}
                                 onClick={() => scrollIntoView(index)}
                             >
@@ -129,9 +150,12 @@ return (
                         {categoriesWithProducts.map((item, index) => (
                             <div key={index} id={index} className='p-1'>
                                 <hr />
-                                <h2 className='fw-bold fs-2'>{item.title}</h2>
+                                <div className="titleHomeProduct">
+                                <h2 className='fw-bold fs-1'>{item.title}</h2>
+
+                                </div>
                                 <br />
-                                <Row lg={4} md={3} xs={1} className='p-2'>
+                                <Row lg={4} md={1} xs={1} className='p-2'>
                                     {filteredProducts(item.title).map((product, pIndex) => (
                                         <ProductCart
                                             key={pIndex + product.name}

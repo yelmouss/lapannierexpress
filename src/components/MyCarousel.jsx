@@ -21,7 +21,7 @@ function MyCarousel() {
     }, []);
 
     const imageClassName = `d-block mx-auto ${isMobile ? 'w-75' : 'w-50'} sliderimg`;
-    const imageStyle = ` ${isMobile ? '' : '150px'} `;
+    const imageStyle = ` ${isMobile ? '' : '160px'} `;
 
     return (
 
@@ -33,13 +33,13 @@ function MyCarousel() {
                     style={{ height: imageStyle }}
                     alt="First slide" />
             </Carousel.Item>
-            <Carousel.Item>
+            {/* <Carousel.Item>
                 <img
                     className={imageClassName}
                     src={Livraison}
                     style={{ height: imageStyle }}
                     alt="Second slide" />
-            </Carousel.Item>
+            </Carousel.Item> */}
             <Carousel.Item>
                 <img
                     className={imageClassName}

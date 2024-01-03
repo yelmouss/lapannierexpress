@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
-import { Cat } from '../datas/Categories';
+import { Cat } from '../../datas/Categories';
 import Categories from './Categories';
 
 import CustomScroll from 'react-custom-scroll';

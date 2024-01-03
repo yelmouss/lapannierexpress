@@ -10,13 +10,14 @@ const greenOptions = { color: 'green', fillColor: 'green' }
 const position = [ 34.020882, -6.841650];
 
 function MapLivraison() {
+    document.title = 'Coup de Food - livraison'
     return (
             <>
-            {/* <Container className='p-5'>
+            <Container className='p-2' fluid>
 
-                <h2>Nous assurons la livraison sur Rabat et sur un rayon de 30 km</h2>
-                <hr />
-            </Container> */}
+                {/* <h2>Nous assurons la livraison sur Rabat et sur un rayon de 30 km</h2>
+                <hr /> */}
+           
         <MapContainer
             center={position}
             zoom={11}
@@ -38,7 +39,9 @@ function MapLivraison() {
                         pathOptions={greenOptions}
                         radius={10000} />
                 </LayerGroup>
-            </MapContainer></>
+            </MapContainer>
+            </Container>
+            </>
        
     )
 }

@@ -11,6 +11,7 @@ const MySwal = withReactContent(Swal);
 
 
 function Cart() {
+    document.title = 'Coup de Food - Panier'
     const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
@@ -136,10 +137,11 @@ function Cart() {
         <>
             <Container className='p-5'>
 
-                <h2>Mon Panier</h2>
+                <h2>Mon Panier </h2>
                 <hr />
-                <Row className='text-end'>
-                    <p>Produits : {calculateTotalProducts()}</p>
+                <p>Produits ajoutés: {calculateTotalProducts()}</p>
+                <Row className='text-end'  xs={1} md={2} lg={2}>
+                    
                     <Col>
                         <CheckoutForm onSubmit={handleCheckout} />
 

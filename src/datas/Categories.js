@@ -5,11 +5,11 @@ export const Cat = [
         title: 'Promos de la semaine',
         ImageUrl: 'https://iod.keplrstatic.com/api/ar_1,c_crop,g_north/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/Recette.jpg'
     },
-    {
-        id: 2,
-        title: 'Nos recettes',
-        ImageUrl: 'https://iod.keplrstatic.com/api/ar_1,c_crop,g_north/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/Recette.jpg'
-    },
+    // {
+    //     id: 2,
+    //     title: 'Nos recettes',
+    //     ImageUrl: 'https://iod.keplrstatic.com/api/ar_1,c_crop,g_north/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/Recette.jpg'
+    // },
     {
         id: 3,
         title: 'Réveillons',
@@ -60,11 +60,11 @@ export const Cat = [
         title: 'Boissons',
         ImageUrl: 'https://iod.keplrstatic.com/api/x_-2,y_0,w_2601,h_2603,c_crop/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/21085__LIMONADE_BIO_75_CL.jpg'
     },
-    {
-        id: 14,
-        title: 'Vins et bières',
-        ImageUrl: 'https://iod.keplrstatic.com/api/x_2,y_0,w_3828,h_3825,c_crop/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/LG15_GremilletChampagneBrut.jpg'
-    },
+    // {
+    //     id: 14,
+    //     title: 'Vins et bières',
+    //     ImageUrl: 'https://iod.keplrstatic.com/api/x_2,y_0,w_3828,h_3825,c_crop/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/LG15_GremilletChampagneBrut.jpg'
+    // },
     {
         id: 15,
         title: 'Promotions',

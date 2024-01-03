@@ -3,10 +3,11 @@ import { Container, Button } from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { FaArrowAltCircleUp } from "react-icons/fa";
+
 const position = [33.991980191627185, -6.874611381541911];
 
-function Footer({ dark, updateDark }) {
-  const [showScrollButton, setShowScrollButton] = useState(false);
+function Footer() {
+  const [showScrollButton, setShowScrollButton] = useState(true);
 
   const scrollIntoTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -15,7 +16,8 @@ function Footer({ dark, updateDark }) {
   const handleScroll = () => {
     // Show the "Scroll to Top" button when scrolling down
     const scrollY = window.scrollY;
-    setShowScrollButton(scrollY > 100);
+
+    setShowScrollButton(scrollY > 400);
   };
 
   useEffect(() => {
@@ -24,23 +26,22 @@ function Footer({ dark, updateDark }) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  return (
-    <>
-      {/* Scroll to Top Button */}
-      <Button
-        variant="success"
-        className="scroll-top-button d-flex align-items-center  "
-        onClick={scrollIntoTop}
-      >
-       <FaArrowAltCircleUp />
-      </Button>
-      <footer
-        className={`footer fw-bold p-5  ${dark
-            ? "bg-light bg-opacity-25 text-light "
-            : "bg-black bg-opacity-25  text-success"
-          }`}
-      >
-        <div className="container-fluid">
+
+
+return (
+  <>
+    {/* Scroll to Top Button */}
+    <Button
+      variant="success"
+      className={`scroll-top-button d-flex align-items-center justify-content-center rounded rounded-circle ${showScrollButton ? 'visible' : 'invisible'}`}
+      onClick={scrollIntoTop}
+    >
+      <FaArrowAltCircleUp />
+    </Button>
+    <footer
+      className={`footer fw-bold p-3 bg-black bg-opacity-50  text-success  mt-auto`}
+    >
+      {/* <div className="container-fluid">
           <div className="row d-flex align-items-center justify-content-center">
             <div className="col-md-6 col-lg-6 col-xl-6">
               <Container>
@@ -64,13 +65,13 @@ function Footer({ dark, updateDark }) {
             </div>
 
             <div className="col-md-4 col-lg-6  rounded">
-            <hr />
+              <hr />
               <h6 className="text-uppercase font-weight-bold  rounded">
                 Infos Contact
               </h6>
 
               <br />
-           
+
               <div className="text-start">
                 <p>
                   <i className="fas fa-envelope mr-3"></i> blabla@blabla.com
@@ -89,33 +90,33 @@ function Footer({ dark, updateDark }) {
             </div>
           </div>
         </div>
-        <hr />
-        <div className=" text-center fw-bold bg-black p-2 bg-opacity-50 text-light">
-          <p>   © {new Date().getFullYear()} Copyright :{" "}</p>
-          <a
-            className="text-warning"
-            target={"_blank"}
-            href="http://yelmouss.com/"
-            rel="noreferrer"
-          >
-            yelmouss.com
-          </a>
-          <p>Made by Imad Jouiet. All rights reserved.</p>
-        </div>
-      </footer>
+        <hr /> */}
+      <div className=" text-center fw-bold  p-2 text-light">
+        <p>   © {new Date().getFullYear()} Copyright :{" "}</p>
+        <a
+          className="text-warning"
+          target={"_blank"}
+          href="http://yelmouss.com/"
+          rel="noreferrer"
+        >
+          yelmouss.com
+        </a>
+        <p>Made by Imad Jouiet. All rights reserved.</p>
+      </div>
+    </footer>
 
-      <a
-        href="https://wa.me/212612753603"
-        className="float"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <FaWhatsapp className="my-float" />
-      </a>
+    <a
+      href="https://wa.me/212612753603"
+      className="float"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <FaWhatsapp className="my-float" />
+    </a>
 
 
-    </>
-  );
+  </>
+);
 }
 
 export default Footer;

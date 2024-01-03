@@ -1,44 +1,43 @@
-
-
+// ProductFormCategory.js
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Cat } from '../datas/Categories';
 
 const ProductFormCategory = ({ onAddProduct }) => {
-    const [formData, setFormData] = useState({
-        name: '',
-        prixUnite: '',
-        Unite: '',
-        categorie: '',
-        prixKilo: '',
-        imageFile: null,
-    });
+  const [formData, setFormData] = useState({
+    name: '',
+    prixUnite: '',
+    Unite: '',
+    categorie: '',
+    prixKilo: '',
+    imageFile: null,
+  });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-    const handleImageChange = (e) => {
-        setFormData({ ...formData, imageFile: e.target.files[0] });
-    };
+  const handleImageChange = (e) => {
+    setFormData({ ...formData, imageFile: e.target.files[0] });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        const { name, prixUnite, Unite, categorie, prixKilo, imageFile } = formData;
+    const { name, prixUnite, Unite, categorie, prixKilo, imageFile } = formData;
 
-        const formDataToSend = new FormData();
-        formDataToSend.append('name', name);
-        formDataToSend.append('prixUnite', prixUnite);
-        formDataToSend.append('Unite', Unite);
-        formDataToSend.append('categorie', categorie);
-        formDataToSend.append('prixKilo', prixKilo);
-        formDataToSend.append('image', imageFile);
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', name);
+    formDataToSend.append('prixUnite', prixUnite);
+    formDataToSend.append('Unite', Unite);
+    formDataToSend.append('categorie', categorie);
+    formDataToSend.append('prixKilo', prixKilo);
+    formDataToSend.append('image', imageFile);
 
-        onAddProduct(formDataToSend);
-    };
-
+    onAddProduct(formDataToSend);
+  };
+  
     return (
         <Container>
 

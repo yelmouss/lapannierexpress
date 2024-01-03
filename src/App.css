@@ -1,14 +1,14 @@
 @import url("https://unpkg.com/leaflet@1.6.0/dist/leaflet.css");
 
-.MyRowCat{
+.MyRowCat {
   flex-wrap: nowrap;
   overflow-y: auto;
 }
 
 .MyRowCat img {
-height: 70px;
-width: 100%;
-object-fit: cover;
+  height: 70px;
+  width: 100%;
+  object-fit: cover;
 
 }
 
@@ -28,10 +28,10 @@ object-fit: cover;
 }
 
 
-.scroll-top-button{
+.scroll-top-button {
   position: fixed;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   bottom: 40px;
   left: 40px;
   text-align: center;
@@ -54,24 +54,24 @@ object-fit: cover;
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background : #5fab01; 
+  background: #5fab01;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #5fab01; 
+  background: #5fab01;
 }
 
-li{
+li {
   list-style: none;
 }
 
-.mystick{
+.mystick {
   position: sticky;
   top: 20%;
 }
@@ -81,12 +81,12 @@ li{
 
 /* CSS */
 .button-53 {
-  background-color: #79AC78;
+  background-color: #618264;
   border: 0 solid #E5E7EB;
   box-sizing: border-box;
   color: #000000;
   display: flex;
-  font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -132,7 +132,7 @@ li{
   }
 }
 
-.bg-svg{
+.bg-svg {
   background-image: url('./img/wave-haikei\ \(2\).svg');
   background-size: cover;
   background-attachment: fixed;
@@ -141,7 +141,7 @@ li{
 
 }
 
-body{
+body {
   background-image: url('./img/wave-haikei\ \(3\).svg');
   background-size: cover;
   background-attachment: fixed;
@@ -150,10 +150,23 @@ body{
   background-repeat: no-repeat;
 }
 
-.OfferImage{
-  height: 450px;
-  width: 100%;
-  object-fit: contain;
+.OfferImage {
+  height: 500px;
+  width: 90%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.moving-left
+{
+ 
+  transition: transform 0.3s ease;
+  transform: translateX(0px);
+ 
+}
+.moving-left:hover
+{
+ transform: translateX(10px);
 }
 
 .table-container {
@@ -162,3 +175,11 @@ body{
 }
 
 /* html{zoom: 80%;} */
+
+.titleHomeProduct{
+
+}
+
+.myseeetext{
+  color: #D0E7D2;
+}

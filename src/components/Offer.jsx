@@ -13,7 +13,7 @@ function Offer() {
 
   useEffect(() => {
     // Fetch data from the API on component mount.
-    fetch(process.env.REACT_APP_APIURL+'categories/get')
+    fetch(process.env.REACT_APP_APIURL + 'categories/get')
       .then((response) => response.json())
       .then((data) => {
         // Initialize likes state with values from local storage or false for each product
@@ -122,11 +122,18 @@ function Offer() {
   return (
     <Container fluid >
       <Row className=" p-5">
-        <Col md={6} className='' >
-          <Image src={offre.imageUrl} alt={offre.name} fluid className='OfferImage' />
+        <Col md={6} className=' p-2 d-flex justify-content-center' >
+          <Image src={offre.imageUrl} alt={offre.name} fluid className='OfferImage shadow-lg moving-left mb-5' />
         </Col>
         <Col md={6}>
           <h1>{offre.name}</h1>
+          {itemQuantity > 0 && (
+            <>
+           
+                <span className="mx-2">{itemQuantity} dans le panier</span>
+           
+            </>
+          )}
           <hr />
           <p>Description du produit : {offre.description}</p>
           <h2>Prix unité <strong>  {offre.prixUnite} </strong> MAD</h2>
@@ -138,10 +145,11 @@ function Offer() {
           </Button>
           {itemQuantity > 0 && (
             <>
-              <Button variant="danger" onClick={handleRemoveFromCart}>
-                <AiOutlineMinusCircle /> Remove from Cart
-              </Button>
-              <span className="mx-2">{itemQuantity}</span>
+               {" "}
+             
+             <AiOutlineMinusCircle  className='text-danger' onClick={handleRemoveFromCart}/> 
+             
+           
             </>
           )}
 
@@ -152,9 +160,9 @@ function Offer() {
               <BsSuitHeart />
             )}
           </Button>
-          <Button variant="secondary" onClick={handleDislike}>
-            {likes[offre._id] ? 'Dislike' : 'Undislike'}
-          </Button>
+
+          {likes[offre._id] ? <Button onClick={handleDislike} >Dislike</Button> : ''}
+
         </Col>
       </Row>
     </Container>
