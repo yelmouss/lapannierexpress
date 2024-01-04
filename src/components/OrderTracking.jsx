@@ -102,7 +102,7 @@ const OrderTracking = () => {
   return (
     <div className='container text-center p-5 d-flex flex-column gap-4' >
       <h2 className='fs-1 text-success fw-bold'>Commandes Tracking</h2>
-      <hr className='fs-1 text-success fw-bold' />
+      <hr className='style-seven' />
       <Form className='container p-5 card bg-light bg-opacity-50'>
         <Form.Group controlId='searchInput'>
           <Form.Label>Entrez le numéro de commande que nous vous avons communiqué & envoyé par mail lors de passage du Order :</Form.Label>

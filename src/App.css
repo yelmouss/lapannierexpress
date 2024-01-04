@@ -183,3 +183,40 @@ body {
 .myseeetext{
   color: #D0E7D2;
 }
+
+.bgBrand{
+  background-color: #618264;
+}
+
+.textbrand{
+ color:  #618264;
+}
+
+hr.style-seven {
+  overflow: visible; /* For IE */
+  height: 20px;
+  border-style: solid;
+  border-color: #618264;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+hr.style-seven:before { /* Not really supposed to work, but does */
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #618264;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}
+
+.spinner-loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+}

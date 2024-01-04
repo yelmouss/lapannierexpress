@@ -136,9 +136,9 @@ function Cart() {
     return (
         <>
             <Container className='p-5'>
-
-                <h2>Mon Panier </h2>
-                <hr />
+            <h2 className='fs-1 text-success fw-bold text-center'>Mon Panier</h2>
+                
+            <hr className='style-seven' />
                 <p>Produits ajoutés: {calculateTotalProducts()}</p>
                 <Row className='text-end'  xs={1} md={2} lg={2}>
                     
@@ -148,7 +148,7 @@ function Cart() {
                     </Col>
                     <Col>     <p>Prix Total : <span className='fs-2 text-success'>  {calculateTotalPrice()} MAD </span></p></Col>
                 </Row>
-                <div className="table-container">
+                <div className="table-container card p-1">
 
                     <Table striped hover variant="light" className='text-center'>
                         <thead>

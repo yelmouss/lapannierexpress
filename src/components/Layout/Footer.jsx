@@ -39,7 +39,7 @@ return (
       <FaArrowAltCircleUp />
     </Button>
     <footer
-      className={`footer fw-bold p-3 bg-black bg-opacity-50  text-success  mt-auto`}
+      className={`footer fw-bold p-3 bgBrand  text-success  mt-auto`}
     >
       {/* <div className="container-fluid">
           <div className="row d-flex align-items-center justify-content-center">
@@ -93,15 +93,15 @@ return (
         <hr /> */}
       <div className=" text-center fw-bold  p-2 text-light">
         <p>   © {new Date().getFullYear()} Copyright :{" "}</p>
-        <a
+        
+        <p>Made by <a
           className="text-warning"
           target={"_blank"}
-          href="http://yelmouss.com/"
+          href="https://yelmouss.vercel.app/"
           rel="noreferrer"
         >
-          yelmouss.com
-        </a>
-        <p>Made by Imad Jouiet. All rights reserved.</p>
+          yelmouss
+        </a>. All rights reserved.</p>
       </div>
     </footer>
 

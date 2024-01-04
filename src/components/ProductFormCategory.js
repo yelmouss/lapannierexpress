@@ -39,7 +39,7 @@ const ProductFormCategory = ({ onAddProduct }) => {
   };
   
     return (
-        <Container>
+        <Container fluid>
 
             <form onSubmit={handleSubmit} className='card p-5'>
                 <div className="mb-3">

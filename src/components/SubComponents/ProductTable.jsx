@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 function ProductTable({products, handleEditProduct, handleDeleteProduct}) {
   return (
-    <table className='table'>
+    <Table responsive>
     <thead>
       <tr>
         <th>Produit</th>
@@ -37,7 +37,7 @@ function ProductTable({products, handleEditProduct, handleDeleteProduct}) {
         </tr>
       ))}
     </tbody>
-  </table>
+    </Table>
   )
 }
 

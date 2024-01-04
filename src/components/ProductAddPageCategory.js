@@ -15,19 +15,15 @@ import { ImCancelCircle } from "react-icons/im";
 import { CiTimer } from "react-icons/ci";
 import ProductTable from './SubComponents/ProductTable';
 import ProductModel from './ProductModel';
+import OrderManagement from './SubComponents/OrderManagement';
 
 const ProductAddPageCategory = () => {
-  const [products, setProducts] = useState([]);
-  const [formData, setFormData] = useState({
-    name: '',
-    prixUnite: '',
-    Unite: '',
-    categorie: '',
-    prixKilo: '',
-    imageFile: null,
-  });
 
+  const [products, setProducts] = useState([]);
   const [editingProductId, setEditingProductId] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const [orderId, setOrderId] = useState('');
+  const [newStatus, setNewStatus] = useState('');  
   const [editingProductData, setEditingProductData] = useState({
     name: '',
     prixUnite: '',
@@ -37,9 +33,6 @@ const ProductAddPageCategory = () => {
     imageFile: null,
   });
 
-  const [orders, setOrders] = useState([]);
-  const [orderId, setOrderId] = useState('');
-  const [newStatus, setNewStatus] = useState('');
 
   useEffect(() => {
     fetchOrders();
@@ -106,8 +99,8 @@ const ProductAddPageCategory = () => {
   };
 
   return (
-    <div className='container text-center p-5'>
-      <Tabs defaultActiveKey="Management" id="fill-tab-example" className="mb-3" fill>
+    <div className='container-fluid text-center p-5'>
+      <Tabs defaultActiveKey="Management" id="fill-tab-example" className="mb-3 " fill>
         <Tab eventKey="home" title="Ajouter un Produit">
           <ProductFormCategory onAddProduct={handleAddProduct} />
         </Tab>
@@ -121,11 +114,10 @@ const ProductAddPageCategory = () => {
         </Tab>
 
         <Tab eventKey="Management" title="Management des commandes">
-          <Container className='card'>
+          <Container className='card p-5' fluid>
             <h2>Order Management</h2>
-
+            <hr />
             {/* Code for order cards and tables here */}
-
             <Row className='d-flex align-items-stretch'>
               <Col>
                 <Card className='bg-warning  fw-bold  h-100  d-flex align-items-center p-2'>
@@ -135,155 +127,109 @@ const ProductAddPageCategory = () => {
                   </p>
                 </Card>
               </Col>
-
               <Col>
                 <Card className='bg-info  fw-bold  h-100 d-flex align-items-center p-2'>
                   <GiConfirmed className='fs-1' />
-
                   <p> Confirmée: {orders.filter((order) => order.Status === 'Confirmée').length}</p>
-
                 </Card>
               </Col>
-
               <Col>
                 <Card className='bg-danger  text-light fw-bold h-100  d-flex align-items-center p-2'>
-
                   <ImCancelCircle className='fs-1' />
                   <p>
                     Annulée: {orders.filter((order) => order.Status === 'Annulée').length}
-
                   </p>
                 </Card>
               </Col>
-
               <Col>
                 <Card className='bg-success text-light fw-bold h-100 d-flex align-items-center p-2'>
                   <TbTruckDelivery className='fs-1' />
                   <p>
                     Livrée: {orders.filter((order) => order.Status === 'Livrée').length}
-
                   </p>
                 </Card>
               </Col>
             </Row>
             <Row>
-              <Col>
+              <Col className='card p-2 mt-2'>
                 <h3>Orders</h3>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Status</th>
-                      <th>Created At</th>
-                      <th>Updated At</th>
-                      <th>Products</th>
-                      <th>Quantities</th>
-                      <th>Unit Prices</th>
-                      <th>Total Prices</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.map((order) => (
-                      <tr key={order._id}>
-                        <td>{order._id}</td>
-                        <td>{order.Status}</td>
-                        <td>{order.createdAt}</td>
-                        <td>{order.updatedAt}</td>
-                        <td>
-                          {/* Afficher les détails des produits ici */}
-                          <ul>
-                            {order.idProduits.map((productId, index) => (
-                              <li key={productId}>
-                                {/* Recherchez le produit correspondant dans la liste des produits */}
-                                {products.map((product) => product._id === productId && (
-                                  <div key={product._id}>
-                                    <p>Name: {product.name}</p>
-                                    <p>Price: {product.prixUnite}</p>
-                                    <p>Category: {product.categorie}</p>
-                                    {/* Ajoutez d'autres détails du produit si nécessaire */}
-                                  </div>
-                                ))}
-                              </li>
-                            ))}
-                          </ul>
-                        </td>
-                        <td>
-                          {order.quantites.map((quantity, index) => (
-                            <span key={index}>{quantity}, </span>
-                          ))}
-                        </td>
-                        <td>
-                          {order.prixUnitaire.map((unitPrice, index) => (
-                            <span key={index}>{unitPrice}, </span>
-                          ))}
-                        </td>
-                        <td>
-                          {order.prixTotal.map((totalPrice, index) => (
-                            <span key={index}>{totalPrice}, </span>
-                          ))}
-                        </td>
+                <Card >
+                  <Table striped bordered hover responsive>
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Products</th>
+                        <th>Quantities</th>
+                        <th>Unit Prices</th>
+                        <th>Total Par Produit</th>
+                        <th>Total à Payer TTC</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </Table>
+                    </thead>
+                    <tbody>
+                      {orders.map((order) => (
+                        <tr key={order._id}>
+                          <td>{order._id}</td>
+                          <td>{order.Status}</td>
+                          <td>{order.createdAt}</td>
+                          <td>{order.updatedAt}</td>
+                          <td>
+                            {/* Afficher les détails des produits ici */}
+                            <ul>
+                              {order.idProduits.map((productId, index) => (
+                                <li key={productId}>
+                                  {/* Recherchez le produit correspondant dans la liste des produits */}
+                                  {products.map((product) => product._id === productId && (
+                                    product.name
+                                  ))}
+                                  <hr />
+                                </li>
+                              ))}
+                            </ul>
+                          </td>
+                          <td>
+                            <ul>
+                              {order.quantites.map((quantity, index) => (
+                                <li key={index}>{quantity}   <hr /> </li>
+                              ))}
+                            </ul>
+                          </td>
+                          <td>
+                            <ul>
+                              {order.prixUnitaire.map((unitPrice, index) => (
+                                <li key={index}>{unitPrice}   <hr /> </li>
+                              ))}
+                            </ul>
+                          </td>
+                          <td>
+                            <ul>
+                              {order.prixTotal.map((totalPrice, index) => (
+                                <li key={index}>{totalPrice}   <hr /> </li>
+                              ))}
+                            </ul>
+                          </td>
+
+                          <td>
+                            {order.prixTotal.reduce((acc, totalPrice) => acc + totalPrice, 0)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </Card>
               </Col>
             </Row>
-
-
             {/* Update Order Status */}
-            <Row>
-              <Col>
-                <h3>Update Order Status</h3>
-                <Form>
-                  <Form.Group controlId="orderId">
-                    <Form.Label>Order ID</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Order ID"
-                      value={orderId}
-                      onChange={(e) => setOrderId(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="newStatus">
-                    <Form.Label>New Status</Form.Label>
-                    <Form.Control
-                      as="select"
-                      value={newStatus}
-                      onChange={(e) => setNewStatus(e.target.value)}
-                    >
-                      <option value="En attente de confirmation">En attente de confirmation</option>
-                      <option value="Confirmée">Confirmée</option>
-                      <option value="Livrée">Livrée</option>
-                      <option value="Annulée">Annulée</option>
-                    </Form.Control>
-                  </Form.Group>
-                  <Button variant="primary" onClick={updateOrderStatus}>
-                    Update Status
-                  </Button>
-                </Form>
-              </Col>
-            </Row>
-
-            {/* Delete Order */}
-            <Row>
-              <Col>
-                <h3>Delete Order</h3>
-                <Form>
-                  <Form.Group controlId="orderIdDelete">
-                    <Form.Label>Order ID</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Order ID"
-                      value={orderId}
-                      onChange={(e) => setOrderId(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Button variant="danger" onClick={deleteOrder}>
-                    Delete Order
-                  </Button>
-                </Form>
-              </Col>
-            </Row>
+            <OrderManagement
+              orderId={orderId}
+              newStatus={newStatus}
+              setOrderId={setOrderId}
+              setNewStatus={setNewStatus}
+              updateOrderStatus={updateOrderStatus}
+              deleteOrder={deleteOrder}
+            />
           </Container>
         </Tab>
       </Tabs>

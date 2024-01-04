@@ -1,49 +1,33 @@
 import React from 'react'
-import { MapContainer, TileLayer, LayerGroup, Circle, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Polygon } from "react-leaflet";
 import { Container, Button } from "react-bootstrap";
-// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-// const fillBlueOptions = { fillColor: 'blue' }
-// const fillRedOptions = { fillColor: 'red' }
-const greenOptions = { color: 'green', fillColor: 'green' }
-// const purpleOptions = { color: 'purple' }
-const position = [ 34.020882, -6.841650];
+const center = [34.020882, -6.841650];
+const polygon = [
+    [33.87878109499991, -7.050219708483017],
+    [33.75517916545401, -6.912146670514288],
+    [33.980572417445586, -6.726293897434756],
+    [34.08357960989204, -6.793297271322962],
+    // [33.78204303490857, -7.266369611198226],
+]
+
+const limeOptions = { color: '#618264' }
 
 function MapLivraison() {
-    document.title = 'Coup de Food - livraison'
     return (
-            <>
-            <Container className='p-2' fluid>
-
-                {/* <h2>Nous assurons la livraison sur Rabat et sur un rayon de 30 km</h2>
-                <hr /> */}
-           
-        <MapContainer
-            center={position}
-            zoom={11}
-            scrollWheelZoom={false}
-            style={{ height: "800px" }}
-        >
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Marker position={position}>
-                    <Popup>
-                        Rachaaa. <br /> je t'aime
-                    </Popup>
-                </Marker>
-
-                <LayerGroup>
-                    <Circle
-                        center={position}
-                        pathOptions={greenOptions}
-                        radius={10000} />
-                </LayerGroup>
-            </MapContainer>
+        <>
+            <Container className='p-5' fluid>
+                <h2 className='fs-1 text-success fw-bold text-center'>Nous assurons la livraison gratuite à Rabat</h2>
+                <hr className='style-seven' />
+                <MapContainer center={center} zoom={10} scrollWheelZoom={false} style={{ height: "500px" }} className='rounded shadow-lg'>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Polygon pathOptions={limeOptions} positions={polygon} />
+                </MapContainer>
             </Container>
-            </>
-       
+        </>
     )
 }
-
 export default MapLivraison

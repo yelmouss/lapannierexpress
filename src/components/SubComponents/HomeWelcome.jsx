@@ -149,9 +149,9 @@ return (
                     <>
                         {categoriesWithProducts.map((item, index) => (
                             <div key={index} id={index} className='p-1'>
-                                <hr />
+                                <hr className='style-seven' />
                                 <div className="titleHomeProduct">
-                                <h2 className='fw-bold fs-1'>{item.title}</h2>
+                                <h2 className='fw-bold fs-1 text-success'>{item.title}</h2>
 
                                 </div>
                                 <br />
