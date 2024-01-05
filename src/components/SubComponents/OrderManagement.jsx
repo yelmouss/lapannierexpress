@@ -2,11 +2,10 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
-const OrderManagement = ({ orderId, newStatus, setOrderId, setNewStatus, updateOrderStatus, deleteOrder }) => {
+const OrderManagement = ({ orderId, newStatus, setOrderId, setNewStatus, updateOrderStatus }) => {
   return (
-    <div>
-      <Row>
-        <Col>
+   
+        <Col lg={6} className='align-self-center'>
           <h3>Update Order Status</h3>
           <Form>
             <Form.Group controlId="orderId">
@@ -31,33 +30,13 @@ const OrderManagement = ({ orderId, newStatus, setOrderId, setNewStatus, updateO
                 <option value="Annulée">Annulée</option>
               </Form.Control>
             </Form.Group>
-            <Button variant="primary" onClick={updateOrderStatus}>
+            <br />
+            <Button variant="success" onClick={updateOrderStatus}>
               Update Status
             </Button>
           </Form>
         </Col>
-      </Row>
-      {/* Delete Order */}
-      <Row>
-        <Col>
-          <h3>Delete Order</h3>
-          <Form>
-            <Form.Group controlId="orderIdDelete">
-              <Form.Label>Order ID</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Order ID"
-                value={orderId}
-                onChange={(e) => setOrderId(e.target.value)}
-              />
-            </Form.Group>
-            <Button variant="danger" onClick={deleteOrder}>
-              Delete Order
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </div>
+    
   );
 };
 

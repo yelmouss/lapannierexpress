@@ -1,11 +1,22 @@
-import React from 'react'
-import { Button, Modal, Form, Tab, Tabs, Container, Row, Col, Table, Card } from 'react-bootstrap';
-function ProductModel({editingProductId, setEditingProductId, editingProductData, handleUpdateProduct, setEditingProductData }) {
+import React from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
+
+function ProductModel({
+  editingProductId,
+  setEditingProductId,
+  editingProductData,
+  handleUpdateProduct,
+  setEditingProductData,
+}) {
+  const handleCloseModal = () => {
+    setEditingProductId(null);
+  };
+
   return (
-    <Modal show={!!editingProductId} onHide={() => setEditingProductId(null)}>
-    <Modal.Header closeButton>
-      <Modal.Title>Modifier le produit</Modal.Title>
-    </Modal.Header>
+    <Modal show={!!editingProductId} onHide={handleCloseModal}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modifier le produit</Modal.Title>
+      </Modal.Header>
     <Modal.Body>
       <Form>
         {/* Ajoutez les champs d'édition ici */}

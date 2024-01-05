@@ -25,9 +25,16 @@ export const fetchProducts = async (apiUrl) => {
   };
   
   export const editProduct = (id, productData, setEditingProductId, setEditingProductData) => {
-    setEditingProductId(id);
-    setEditingProductData(productData);
+    return new Promise((resolve) => {
+      setEditingProductId(id);
+      setEditingProductData(productData);
+      resolve(); // Resolve the promise once the operations are complete
+    });
   };
+  // export const editProduct = (id, productData, setEditingProductId, setEditingProductData) => {
+  //   setEditingProductId(id);
+  //   setEditingProductData(productData);
+  // };  
   
   export const updateProduct = async (apiUrl, editingProductId, editingProductData, setProducts, setEditingProductId, setEditingProductData) => {
     try {

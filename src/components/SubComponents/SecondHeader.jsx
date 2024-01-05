@@ -10,10 +10,10 @@ function SecondHeader() {
     <>
       <Container className='nowrap col-11'>
       <CustomScroll >
-        <Row className='MyRowCat'>
+        <Row className='MyRowCat p-2'>
        
           {Cat.map((item, index) => (
-            <Col key={index} className='text-nowrap'>
+            <Col key={index} className='text-nowrap bouncy'>
               <Categories key={index} className='text-nowrap' title={item.title} imageUrl={item.ImageUrl} />
             </Col>
           ))}

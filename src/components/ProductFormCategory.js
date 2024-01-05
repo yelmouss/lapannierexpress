@@ -39,9 +39,9 @@ const ProductFormCategory = ({ onAddProduct }) => {
   };
   
     return (
-        <Container fluid>
+        <Container fluid className='d-flex justify-content-center'>
 
-            <form onSubmit={handleSubmit} className='card p-5'>
+            <form onSubmit={handleSubmit} className='card p-5 col-lg-6 '>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Nom du produit:</label>
                     <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="form-control" required />

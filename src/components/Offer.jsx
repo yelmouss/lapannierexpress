@@ -120,48 +120,67 @@ function Offer() {
   };
 
   return (
-    <Container fluid >
-      <Row className=" p-5">
+    <Container  >
+      <Row className="  ">
+        <Row xs={1} lg={2}>
+          <Col className='d-flex justify-content-center align-items-center'>  <h1 className='fs-1 text-success fw-bold text-start p-5'> {offre.name}</h1></Col>
+          <Col className='d-flex justify-content-center align-items-center'>
+            <h2 className="text-success fst-italic">Prix unité <strong>{offre.prixUnite}</strong> MAD</h2>
+          </Col>
+        </Row>
+
+        <hr />
         <Col md={6} className=' p-2 d-flex justify-content-center' >
-          <Image src={offre.imageUrl} alt={offre.name} fluid className='OfferImage shadow-lg moving-left mb-5' />
+          <div className="card p-3">
+            <Image src={offre.imageUrl} alt={offre.name} fluid className='OfferImage shadow-lg moving-left rounded' />
+
+          </div>
         </Col>
-        <Col md={6}>
-          <h1>{offre.name}</h1>
-          {itemQuantity > 0 && (
-            <>
-           
-                <span className="mx-2">{itemQuantity} dans le panier</span>
-           
-            </>
-          )}
-          <hr />
-          <p>Description du produit : {offre.description}</p>
-          <h2>Prix unité <strong>  {offre.prixUnite} </strong> MAD</h2>
-          <p>unité : {offre.Unite}</p>
-          <h2>Prix Kilo {offre.prixKilo}</h2>
-          <hr />
-          <Button variant="success" onClick={handleAddToCart}>
-            <AiOutlinePlusCircle /> Ajouter au pannier
-          </Button>
-          {itemQuantity > 0 && (
-            <>
-               {" "}
-             
-             <AiOutlineMinusCircle  className='text-danger' onClick={handleRemoveFromCart}/> 
-             
-           
-            </>
-          )}
+        <Col md={6} >
+          <>
+            {itemQuantity > 0 && (
 
-          <Button className="mx-2" onClick={handleLike}>
-            {likes[offre._id] ? (
-              <BsFillSuitHeartFill className="text-danger" />
-            ) : (
-              <BsSuitHeart />
+
+              <span className="mx-2 text-success fw-bold text-start fs-1">{itemQuantity} dans le panier</span>
             )}
-          </Button>
 
-          {likes[offre._id] ? <Button onClick={handleDislike} >Dislike</Button> : ''}
+            <div className="d-flex">
+            <Button variant="success" onClick={handleAddToCart}>
+              <AiOutlinePlusCircle /> Ajouter au panier
+            </Button>
+
+            {itemQuantity > 0 && (
+              <>
+                <Button  onClick={handleRemoveFromCart} className='m-1 bg-danger bg-opacity-75'>
+                  <AiOutlineMinusCircle className='text-light' />
+                </Button>
+              </>
+            )}
+
+            <Button className="mx-2 m-1"  onClick={handleLike} variant='light'>
+              {likes[offre._id] ? (
+                <BsFillSuitHeartFill className="text-danger" />
+              ) : (
+                <BsSuitHeart />
+              )}
+            </Button>
+
+            {likes[offre._id] && <Button variant='light' onClick={handleDislike} className="text-danger">Dislike</Button>}
+            </div>
+      
+
+          </>
+
+          <hr />
+          <div className="text-center card bg-light bg-opacity-50">
+            <p className="font-italic text-muted">Description du produit : {offre.description}</p>
+
+            <p>unité : {offre.Unite}</p>
+            <h2 className="text-success fst-italic">Prix Kilo {offre.prixKilo}</h2>
+
+
+          </div>
+
 
         </Col>
       </Row>

@@ -74,23 +74,18 @@ function Header() {
 
                     </Nav> */}
                 </Navbar.Collapse>
-
-                <Nav >                                                    {/* 
-                                <NavLink to={'/'} className={'nav-link  fw-bold ml-2 position-relative'}>
-                                    <CiHeart className='fs-2' />
-                                </NavLink> */}
-
-                    <NavLink to={'cart'} className={'nav-link  fw-bold  position-relative me-auto'}>
-                        <CiShoppingCart className='fs-2' /> Mon panier
-                        {cartCount > 0 && <span className="badge bg-danger rounded-pill  position-absolute top-5  translate-middle">
-                            {cartCount}
-
-                        </span>}
+                <Nav>
+                    <NavLink to={'cart'} className={'nav-link fw-bold ml-auto'}>
+                        <CiShoppingCart className='fs-2' /> Mon panier {" "}
+                        {cartCount > 0 && (
+                            <span className="badge bg-danger rounded-pill position-absolute top-5 translate-middle">
+                                {cartCount}
+                            </span>
+                        )}
                     </NavLink>
-                    {" "}
                 </Nav>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav" >
+                <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <CiCircleChevDown />
                 </Navbar.Toggle>
             </Container>

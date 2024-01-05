@@ -47,14 +47,19 @@ const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleA
           {!itemQuantity && (
             <Row className="align-items-center fs-4">
               <Col>
-                <Button variant="light" onClick={() => handleAddToCart(product)}>
-                  <MdAddShoppingCart className="text-black" />
+                <Button variant="light" onClick={() => handleAddToCart(product)} className='text-success fw-bold'>
+                  <MdAddShoppingCart className='fw-bold fs-3' />
+                  <br />
+                  <span>Ajouter au panier</span>
                 </Button>
               </Col>
               <Col>
                 <Button variant="light" onClick={() => handleLike(product._id)}>
                   {likes && likes[product._id] ? (
+                    <>
                     <BsFillSuitHeartFill className="text-danger" />
+                   
+                    </>
                   ) : (
                     <BsSuitHeart className="text-black" />
                   )}

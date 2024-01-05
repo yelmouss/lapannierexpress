@@ -14,8 +14,8 @@ function HomeWelcome() {
     useEffect(() => {
         // Fetch data from the API on component mount.
         // http://localhost:8000/api/categories/get
-        fetch(process.env.REACT_APP_APIURL+"categories/get")
-        // fetch(process.env.REACT_APP_APIURL+"categories/get")
+        fetch(process.env.REACT_APP_APIURL + "categories/get")
+            // fetch(process.env.REACT_APP_APIURL+"categories/get")
             .then(response => response.json())
             .then(data => {
                 // Initialize likes state with values from local storage or false for each product
@@ -61,16 +61,16 @@ function HomeWelcome() {
             ...likes,
             [productId]: !likes[productId],
         }));
-          // Show SweetAlert when a product is liked
-          Swal.fire({
+        // Show SweetAlert when a product is liked
+        Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Like Done",
             showConfirmButton: false,
             timer: 1500,
             customClass: 'small-swal', // Define a custom class for the popup
-            
-          });
+
+        });
     };
 
     const updateCart = (newCart) => {
@@ -88,7 +88,7 @@ function HomeWelcome() {
                     : cartItem
             );
             updateCart(newCart);
-            
+
         } else {
             const newCart = [
                 ...cart,
@@ -102,8 +102,8 @@ function HomeWelcome() {
                 showConfirmButton: false,
                 timer: 1500,
                 customClass: 'small-swal', // Define a custom class for the popup
-                
-              });
+
+            });
         }
     };
 
@@ -121,61 +121,61 @@ function HomeWelcome() {
             updateCart(newCart);
         }
     };
- // Filtrer les catégories en fonction des produits disponibles
- const categoriesWithProducts = Cat.filter((category) =>
- apiData.some((product) => product.categorie === category.title)
-);
+    // Filtrer les catégories en fonction des produits disponibles
+    const categoriesWithProducts = Cat.filter((category) =>
+        apiData.some((product) => product.categorie === category.title)
+    );
 
-return (
-    <Container fluid>
-        <Row xs={1} lg={2} md={1}>
-            <Col className='text-start p-3 mt-5 ' lg={3} md={4} xs={12}>
-                <Row xs={2} lg={1} md={1} className='d-flex align-items-stretch'>
-                    {categoriesWithProducts.map((item, index) => (
-                        <Col key={index} className='mb-1 d-flex'>
-                            <Link
-                                className='mb-1 button-53 myseeetext '
-                                to={'#' + item.title}
-                                onClick={() => scrollIntoView(index)}
-                            >
-                                {item.title}
-                            </Link>
-                        </Col>
-                    ))}
-                </Row>
-            </Col>
-            <Col lg={8} md={6} className='p-5'>
-                {dataLoaded && (
-                    <>
+    return (
+        <Container fluid>
+            <Row xs={1} lg={2} md={1}>
+                <Col className='text-start p-3' lg={3} md={4} xs={12}>
+                    <Row xs={2} lg={1} md={1} className='d-flex align-items-stretch'>
                         {categoriesWithProducts.map((item, index) => (
-                            <div key={index} id={index} className='p-1'>
-                                <hr className='style-seven' />
-                                <div className="titleHomeProduct">
-                                <h2 className='fw-bold fs-1 text-success'>{item.title}</h2>
-
-                                </div>
-                                <br />
-                                <Row lg={4} md={1} xs={1} className='p-2'>
-                                    {filteredProducts(item.title).map((product, pIndex) => (
-                                        <ProductCart
-                                            key={pIndex + product.name}
-                                            product={product}
-                                            likes={likes}
-                                            handleLike={handleLike}
-                                            handleRemoveFromCart={handleRemoveFromCart}
-                                            handleAddToCart={handleAddToCart}
-                                            cart={cart}
-                                        />
-                                    ))}
-                                </Row>
-                            </div>
+                            <Col key={index} className='mb-1 d-flex'>
+                                <Link
+                                    className='mb-1 button-53 myseeetext '
+                                    to={'#' + item.title}
+                                    onClick={() => scrollIntoView(index)}
+                                >
+                                    {item.title}
+                                </Link>
+                            </Col>
                         ))}
-                    </>
-                )}
-            </Col>
-        </Row>
-    </Container>
-);
+                    </Row>
+                </Col>
+                <Col lg={8} md={6} className='p-5'>
+                    {dataLoaded && (
+                        <>
+                            {categoriesWithProducts.map((item, index) => (
+                                <div key={index} id={index} className='p-1 fs-4'>
+                                    <hr className='style-seven' />
+                                    <div className="titleHomeProduct">
+                                        <h1 className='fw-bold                                  text-success'>{item.title}</h1>
+
+                                    </div>
+                                    <br />
+                                    <Row lg={4} md={1} xs={1} className='p-2'>
+                                        {filteredProducts(item.title).map((product, pIndex) => (
+                                            <ProductCart
+                                                key={pIndex + product.name}
+                                                product={product}
+                                                likes={likes}
+                                                handleLike={handleLike}
+                                                handleRemoveFromCart={handleRemoveFromCart}
+                                                handleAddToCart={handleAddToCart}
+                                                cart={cart}
+                                            />
+                                        ))}
+                                    </Row>
+                                </div>
+                            ))}
+                        </>
+                    )}
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default HomeWelcome;

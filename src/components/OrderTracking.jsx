@@ -73,7 +73,8 @@ const OrderTracking = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/categories/get');
+        
+        const response = await axios.get(`${process.env.REACT_APP_APIURL}categories/get`);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -85,7 +86,8 @@ const OrderTracking = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/commandes/${searchInput}`);
+      
+      const response = await axios.get(`${process.env.REACT_APP_APIURL}commandes/${searchInput}`);
       setOrderDetails(response.data);
     } catch (error) {
       console.error('Error fetching order details:', error);

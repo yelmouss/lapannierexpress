@@ -36,9 +36,9 @@
   left: 40px;
   text-align: center;
   font-size: 30px;
-  box-shadow: 2px 2px 3px #999;
+  /* box-shadow: 2px 2px 3px #999; */
   z-index: 999;
-  background-color: #618264;
+  /* background-color: #618264; */
 }
 
 .my-float {
@@ -48,8 +48,8 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 7px;
 }
 
 /* Track */
@@ -59,12 +59,12 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #5fab01;
+  background: #79AC78;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #5fab01;
+  background: #79AC78;
 }
 
 li {
@@ -104,6 +104,47 @@ li {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  animation: bn53bounce 4s infinite;
+  
+}
+
+.bouncy {
+  animation: bn53bounce 4s infinite;
+}
+
+@keyframes bn53bounce {
+  5%,
+  50% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1) rotate(-3deg);
+  }
+
+  25% {
+    transform: scale(1) rotate(3deg);
+  }
+
+  30% {
+    transform: scale(1) rotate(-3deg);
+  }
+
+  35% {
+    transform: scale(1) rotate(2deg);
+  }
+
+  40% {
+    transform: scale(1) rotate(0);
+  }
 }
 
 .button-53:focus {
@@ -150,11 +191,20 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Pour les écrans larges (md, lg, xl) */
 .OfferImage {
   height: 500px;
-  width: 90%;
-  object-fit: cover;
+  width: 100%;
+  object-fit: contain;
   object-position: top;
+}
+
+/* Pour les écrans plus petits (xs, sm) */
+@media (max-width: 767px) {
+  .OfferImage {
+    height: auto; /* Ajuste automatiquement la hauteur en fonction du contenu */
+    max-width: 100%; /* Assure que l'image ne dépasse pas la largeur du conteneur */
+  }
 }
 
 .moving-left

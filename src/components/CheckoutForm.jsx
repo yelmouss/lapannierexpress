@@ -1,53 +1,71 @@
+// CheckoutForm.js
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const CheckoutForm = ({ onSubmit }) => {
-  const [AdresseLivraison, setAdresseLivraison] = useState('');
-  const [ClientMail, setClientMail] = useState('');
-  const [ClientPhone, setClientPhone] = useState('');
+const CheckoutForm = ({ onSubmit, setClientMail }) => {
+  const [formData, setFormData] = useState({
+    AdresseLivraison: '',
+    ClientMail: '',
+    ClientPhone: '',
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Rassemblez les données du formulaire
-    const formData = {
-      AdresseLivraison,
-      ClientMail,
-      ClientPhone,
-    };
-
-    // Passez les données du formulaire à la fonction de soumission fournie par le parent
-    onSubmit(formData);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const isConfirmed = await onSubmit(formData);
+
+    if (isConfirmed) {
+        setClientMail(formData.ClientMail);
+        // Réinitialiser le formulaire
+        setFormData({
+            AdresseLivraison: '',
+            ClientMail: '',
+            ClientPhone: '',
+        });
+    }
+};
+
   return (
-    <Form onSubmit={handleSubmit} className='text-center p-3'>
+    <Form onSubmit={handleSubmit} className='text-center p-3 col-lg-6'>
       <Form.Group controlId="formAdresseLivraison">
         <Form.Label>Adresse de livraison</Form.Label>
+        <hr />
         <Form.Control
           type="text"
-          value={AdresseLivraison}
-          onChange={(e) => setAdresseLivraison(e.target.value)}
+          name="AdresseLivraison"
+          value={formData.AdresseLivraison}
+          onChange={handleChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="formClientMail">
-        <Form.Label>Email du client</Form.Label>
+        <Form.Label>Email :</Form.Label>
+        <hr />
         <Form.Control
           type="email"
-          value={ClientMail}
-          onChange={(e) => setClientMail(e.target.value)}
+          name="ClientMail"
+          value={formData.ClientMail}
+          onChange={handleChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="formClientPhone">
-        <Form.Label>Téléphone du client</Form.Label>
+        <Form.Label>Téléphone :</Form.Label>
+        <hr />
         <Form.Control
           type="tel"
-          value={ClientPhone}
-          onChange={(e) => setClientPhone(e.target.value)}
+          name="ClientPhone"
+          value={formData.ClientPhone}
+          onChange={handleChange}
           required
         />
       </Form.Group>

@@ -84,8 +84,9 @@ const CategoryProducts = () => {
   };
 
   return (
-    <div className='container p-5  vh-100'>
-      <h2 className='text-center'>Products in Category: {categoryName}</h2>
+    <div className='container p-5'>
+      
+      <h2 className='fs-1 text-success fw-bold text-center'>Produits dans le store: {categoryName}</h2>
       <hr />
       {loading ? (
         <p>Loading...</p>

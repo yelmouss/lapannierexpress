@@ -8,6 +8,7 @@ function Home() {
     document.title = 'Coup de Food - Home'
     return (
         <>
+        
             <MyCarousel />
             <SecondHeader />
             <HomeWelcome />
