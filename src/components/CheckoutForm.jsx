@@ -33,7 +33,7 @@ const CheckoutForm = ({ onSubmit, setClientMail }) => {
 };
 
   return (
-    <Form onSubmit={handleSubmit} className='text-center p-3 col-lg-6'>
+    <Form onSubmit={handleSubmit} className='text-center p-3 col-lg-6 col-12 bg-light'>
       <Form.Group controlId="formAdresseLivraison">
         <Form.Label>Adresse de livraison</Form.Label>
         <hr />

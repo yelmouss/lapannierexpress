@@ -9,8 +9,9 @@ function Home() {
     return (
         <>
         
-            <MyCarousel />
+           
             <SecondHeader />
+            <MyCarousel />
             <HomeWelcome />
         </>
 

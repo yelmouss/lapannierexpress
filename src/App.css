@@ -5,6 +5,40 @@
   overflow-y: auto;
 }
 
+
+:root {
+  --b: 1px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #618264;
+  
+}
+
+/* CSS */
+.B89 {
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+
+  border: 0;
+  transform: rotate(1deg);
+}
+
+/* CSS */
+.B89:hover {
+
+
+background-color: #075e54;
+color:#79AC78;
+}
+
+
+
 .MyRowCat img {
   height: 70px;
   width: 100%;
@@ -224,11 +258,53 @@ body {
   max-width: 100%;
 }
 
-/* html{zoom: 80%;} */
+.titleHomeProduct {
+  /* font-size: 60px;
+  -webkit-text-decoration: underline wavy #D0E7D2;
+  text-decoration: underline wavy #D0E7D2;
+  line-height: 1.5;  */
 
-.titleHomeProduct{
 
+  background-color: #D0E7D2;
+  border: 0 solid #E5E7EB;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* font-size: 1rem; */
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: .75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  /* text-decoration: none #000000 solid; */
+  text-decoration-thickness: auto;
+  width: 100%;
+padding-bottom: 2%;
+  position: relative;
+
+  /* transform: rotate(1deg); */
+  /* user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation; */
+
+} 
+
+
+
+.titleHomeProduct:after {
+  content: '';
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
 }
+
+
+
 
 .myseeetext{
   color: #D0E7D2;
@@ -236,6 +312,12 @@ body {
 
 .bgBrand{
   background-color: #618264;
+}
+
+.bgBrand2{
+  background-color: #D0E7D2;
+
+  
 }
 
 .textbrand{
@@ -269,4 +351,103 @@ hr.style-seven:before { /* Not really supposed to work, but does */
   align-items: center;
   height: 100vh;
   font-size: 1.5rem;
+}
+
+
+
+.search-box{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.input-search{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  background-color: #D0E7D2;
+  padding-right: 40px;
+  /* color:#fff; */
+}
+.input-search::placeholder{
+  color:#618264;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  /* font-weight: bold; */
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#618264 ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ .input-search{
+  width: 370px;
+
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+  width: 370px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+
+.slick-prev:before,
+.slick-next:before {
+  color: yellow;
+}
+
+
+
+.bn47 {
+  position: relative;
+  padding: 1rem 2rem 0.5rem 2.5rem;
+  color: #075e54;
+  border: 3px solid #618264;
+  -webkit-transition: padding 0.3s ease-in-out;
+  transition: padding 0.3s ease-in-out;
+}
+
+.bn47:before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #D0E7D2;
+  border-right: 3px solid #D0E7D2;
+  border-bottom: 3px solid #D0E7D2;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.bn47:hover {
+  padding: 0.75rem 2.25rem;
+}
+
+.bn47:hover:before {
+  top: 0;
+  left: 0;
 }

@@ -84,14 +84,14 @@ const CategoryProducts = () => {
   };
 
   return (
-    <div className='container p-5'>
+    <div className='container p-5 min-vh-100 d-flex flex-column align-items-center gap-3'>
       
       <h2 className='fs-1 text-success fw-bold text-center'>Produits dans le store: {categoryName}</h2>
       <hr />
       {loading ? (
         <p>Loading...</p>
       ) : products.length === 0 ? (
-        <p>No products available for this category in this period.</p>
+        <p className='text-success fw-bold'>No products available for this category in this period.</p>
       ) : (
         <div className='row'>
           {products.map((product) => (

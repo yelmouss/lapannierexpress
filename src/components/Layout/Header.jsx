@@ -6,7 +6,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { NavLink } from 'react-router-dom';
-import Logo from '../../img/coup de food-logos_transparent.png'
+// import Logo from '../../img/coup de food-logos_transparent.png'
+import Logo from '../../img/IMG_0534-removebg-preview.png'
+import Logo2 from '../../img/coupdefood-logos.jpeg'
+
+
 
 function Header() {
     const [cartCount, setCartCount] = useState(0);
@@ -32,51 +36,33 @@ function Header() {
 
 
     return (
-        <Navbar expand="lg" className="bg-success text-light" variant="dark" sticky="top">
-            <Container className="text-light text-center">
-
-
-                <Nav className="me-auto">
-                    <NavLink to={'/'} className={'nav-link fw-bold ml-2'}>
-                        <img
-                            alt=""
-                            src={Logo}
-                            width="150"
-                            height="40"
-                            className="d-inline-block align-top"
-                        />
-                        {/* <CiHome className="fs-1" /> */}
-                    </NavLink>
-
-                </Nav>
-
+        <Navbar expand="lg" className="bgBrand2 text-light sticky-top textbrand" sticky="top">
+            <Container>
+                <NavLink to="/" className={'nav-brand'}>
+                    <img
+                       src={Logo}
+                       width="110"
+                       height="70"
+                        className="d-inline-block align-top"
+                        alt="React Bootstrap logo"
+                    />
+                </NavLink>
+       
                 <Navbar.Collapse id="basic-navbar-nav ">
-                    <Nav className="me-auto">
-                        <NavLink to={'/Suivi'} className={'nav-link fw-bold ml-2'}>
+                    <Nav>
+                        <NavLink to={'/Suivi'} className={'nav-link fw-bold ml-2 textbrand'}>
                             <CiUnread /> Suivi de commande
                         </NavLink>
 
-                        <NavLink to={'/LivraisonMap'} className={'nav-link fw-bold ml-2'}>
+                        <NavLink to={'/LivraisonMap'} className={'nav-link fw-bold ml-2 textbrand'}>
                             <CiLocationOn /> On vous livre où ?
                         </NavLink>
                     </Nav>
 
-                    {/* <Nav >
-
-                      
-
-                        <NavLink to={'cart'} className={'nav-link  fw-bold ml-2 position-relative'}>
-                            <CiShoppingCart className='fs-1' /> Mon panier
-                            {cartCount > 0 && <span className="badge bg-danger rounded-pill  position-absolute top-5  translate-middle">
-                                {cartCount}
-                            </span>}
-                        </NavLink>
-
-                    </Nav> */}
                 </Navbar.Collapse>
                 <Nav>
-                    <NavLink to={'cart'} className={'nav-link fw-bold ml-auto'}>
-                        <CiShoppingCart className='fs-2' /> Mon panier {" "}
+                    <NavLink to={'cart'} className={'nav-link fw-bold ml-auto fs-5 textbrand'}>
+                        <CiShoppingCart className='textbrand fw-bold fs-2' /> Panier {" "}
                         {cartCount > 0 && (
                             <span className="badge bg-danger rounded-pill position-absolute top-5 translate-middle">
                                 {cartCount}

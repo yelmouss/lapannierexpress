@@ -31,15 +31,15 @@ function Footer() {
 return (
   <>
     {/* Scroll to Top Button */}
-    <Button
-      variant="success"
-      className={`scroll-top-button d-flex align-items-center justify-content-center rounded rounded-circle ${showScrollButton ? 'visible' : 'invisible'}`}
+    <button
+    
+      className={`scroll-top-button btn myseeetext bgBrand  shadow-lg d-flex align-items-center justify-content-center   ${showScrollButton ? 'visible' : 'invisible'}`}
       onClick={scrollIntoTop}
     >
-      <FaArrowAltCircleUp />
-    </Button>
+      <FaArrowAltCircleUp  />
+    </button>
     <footer
-      className={`footer fw-bold p-3 bgBrand  text-success  mt-auto`}
+      className={`footer fw-bold p-1 bgBrand  text-success  mt-auto `}
     >
       {/* <div className="container-fluid">
           <div className="row d-flex align-items-center justify-content-center">

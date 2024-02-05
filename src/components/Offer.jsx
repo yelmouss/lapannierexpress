@@ -9,8 +9,6 @@ function Offer() {
   const { id } = useParams();
   const [apiData, setApiData] = useState([]);
   const { likes, setLikes, cart, setCart } = useCartLikesContext();
-
-
   useEffect(() => {
     // Fetch data from the API on component mount.
     fetch(process.env.REACT_APP_APIURL + 'categories/get')
@@ -36,9 +34,7 @@ function Offer() {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCart(storedCart);
   }, []);
-
   const offre = apiData.find((offre) => offre._id === id);
-
   if (offre === undefined) {
     return (
       <>
@@ -49,7 +45,6 @@ function Offer() {
 
   const existingItem = cart.find((cartItem) => cartItem.id === offre._id);
   const itemQuantity = existingItem ? existingItem.quantity : 0;
-
   const handleLike = () => {
     setLikes((prevLikes) => ({
       ...prevLikes,
@@ -120,13 +115,12 @@ function Offer() {
   };
 
   return (
-    <Container  >
+    <Container className='min-vh-100' >
       <Row className="  ">
         <Row xs={1} lg={2}>
-          <Col className='d-flex justify-content-center align-items-center'>  <h1 className='fs-1 text-success fw-bold text-start p-5'> {offre.name}</h1></Col>
           <Col className='d-flex justify-content-center align-items-center'>
-            <h2 className="text-success fst-italic">Prix unité <strong>{offre.prixUnite}</strong> MAD</h2>
-          </Col>
+              <h1 className='fs-1 text-success fw-bold text-start p-5'> {offre.name}</h1></Col>
+         
         </Row>
 
         <hr />
@@ -136,7 +130,10 @@ function Offer() {
 
           </div>
         </Col>
-        <Col md={6} >
+        <Col md={6} className='p-2'>
+        <Col className='d-flex justify-content-center align-items-center'>
+            <h2 className="text-success fst-italic">Prix unité <strong>{offre.prixUnite}</strong> MAD</h2>
+          </Col>
           <>
             {itemQuantity > 0 && (
 
@@ -144,30 +141,30 @@ function Offer() {
               <span className="mx-2 text-success fw-bold text-start fs-1">{itemQuantity} dans le panier</span>
             )}
 
-            <div className="d-flex">
-            <Button variant="success" onClick={handleAddToCart}>
-              <AiOutlinePlusCircle /> Ajouter au panier
-            </Button>
+            <div className="d-flex mt-2">
+              <Button variant="success" onClick={handleAddToCart} className=' button-53 myseeetext'>
+                <AiOutlinePlusCircle /> Ajouter au panier
+              </Button>
 
-            {itemQuantity > 0 && (
-              <>
-                <Button  onClick={handleRemoveFromCart} className='m-1 bg-danger bg-opacity-75'>
-                  <AiOutlineMinusCircle className='text-light' />
-                </Button>
-              </>
-            )}
-
-            <Button className="mx-2 m-1"  onClick={handleLike} variant='light'>
-              {likes[offre._id] ? (
-                <BsFillSuitHeartFill className="text-danger" />
-              ) : (
-                <BsSuitHeart />
+              {itemQuantity > 0 && (
+                <>
+                  <Button onClick={handleRemoveFromCart} className='m-1 bg-danger bg-opacity-75'>
+                    <AiOutlineMinusCircle className='text-light' />
+                  </Button>
+                </>
               )}
-            </Button>
 
-            {likes[offre._id] && <Button variant='light' onClick={handleDislike} className="text-danger">Dislike</Button>}
+              <Button className="mx-2 m-1" onClick={handleLike} variant='light'>
+                {likes[offre._id] ? (
+                  <BsFillSuitHeartFill className="text-danger" />
+                ) : (
+                  <BsSuitHeart />
+                )}
+              </Button>
+
+              {likes[offre._id] && <Button variant='light' onClick={handleDislike} className="text-danger">Dislike</Button>}
             </div>
-      
+
 
           </>
 

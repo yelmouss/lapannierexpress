@@ -231,8 +231,8 @@ function Cart() {
 
     return (
         <>
-            <Container className='p-4'>
-                <Row className='text-end' xs={1} md={1} lg={1}>
+            <Container className='p-2'>
+                <Row className='text-end p-5' xs={1} md={1} lg={1}>
                 <h2 className='fs-1 text-success fw-bold text-center'>Mon Panier    <span className='fs-2 text-success text-end' > Total : {calculateTotalPrice()} MAD </span></h2>
                     <Col className=' mt-2 text-center  d-flex align-items-center flex-column'>
                         {!isSubmitting && (

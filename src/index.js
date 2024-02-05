@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 // Ajoutez ces importations en haut de votre fichier
 import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
 import 'datatables.net-bs4/js/dataTables.bootstrap4.min.js';
-
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

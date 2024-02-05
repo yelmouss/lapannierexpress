@@ -17,7 +17,9 @@ function MapLivraison() {
     return (
         <>
             <Container className='p-5' fluid>
-                <h2 className='fs-1 text-success fw-bold text-center'>Nous assurons la livraison gratuite à Rabat</h2>
+                <h2 className='fs-1 text-success fw-bold text-center'>Nous assurons la livraison gratuite dans la région de Rabat </h2>
+                <br />
+                {/* <h3 className='fs-1 text-success fw-bold text-center'> 👇 à partir de 100 Dh d'achats 👇 </h3> */}
                 <hr className='style-seven' />
                 <MapContainer center={center} zoom={10} scrollWheelZoom={false} style={{ height: "500px" }} className='rounded shadow-lg'>
                     <TileLayer
