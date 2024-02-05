@@ -170,7 +170,7 @@ function HomeWelcome() {
                                                 {filteredProducts(item.title).length > 0 && (
                                                     <>
                                                         <Font family='Indie Flower'>
-                                                            <h1 className='fw-bold titleHomeProduct textbrand'>{item.title}</h1>
+                                                            <h1 className='fw-bold B90 textbrand'>{item.title}</h1>
                                                         </Font>
                                                         <hr className='style-seven' />
                                                     </>

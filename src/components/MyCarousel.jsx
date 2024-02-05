@@ -4,6 +4,7 @@ import { Carousel } from 'react-bootstrap';
 import LeProd from '../img/LES_PRODUITS_GRAND_FRAIS.webp';
 import Livraison from '../img/livraison77.webp';
 import Panier from '../img/Panier_gourmands_3.webp';
+import { Fade } from 'react-awesome-reveal';
 
 function MyCarousel() {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -25,7 +26,10 @@ function MyCarousel() {
 
     return (
 
-        <><Carousel className="" controls={false} indicators={false}>
+        <>
+        <Fade direction='left'>
+
+        <Carousel className="bg-white" controls={false} indicators={false} >
             <Carousel.Item>
                 <img
                     className={imageClassName}
@@ -33,13 +37,7 @@ function MyCarousel() {
                     style={{ height: imageStyle }}
                     alt="First slide" />
             </Carousel.Item>
-            {/* <Carousel.Item>
-                <img
-                    className={imageClassName}
-                    src={Livraison}
-                    style={{ height: imageStyle }}
-                    alt="Second slide" />
-            </Carousel.Item> */}
+          
             <Carousel.Item>
                 <img
                     className={imageClassName}
@@ -47,7 +45,9 @@ function MyCarousel() {
                     style={{ height: imageStyle }}
                     alt="Third slide" />
             </Carousel.Item>
-        </Carousel></>
+        </Carousel>  
+        </Fade>
+  </>
     );
 }
 

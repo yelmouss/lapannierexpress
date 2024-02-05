@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CiLocationOn, CiSearch, CiHeart, CiShoppingCart, CiHome, CiUnread, CiCircleChevDown } from 'react-icons/ci';
+import { CiLocationOn, CiSearch, CiHeart, CiShoppingCart, CiHome , CiUnread, CiCircleChevDown } from 'react-icons/ci';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -37,7 +37,7 @@ function Header() {
 
     return (
         <Navbar expand="lg" className="bgBrand2 text-light sticky-top textbrand" sticky="top">
-            <Container>
+            <Container fluid>
                 <NavLink to="/" className={'nav-brand'}>
                     <img
                        src={Logo}
@@ -50,6 +50,11 @@ function Header() {
        
                 <Navbar.Collapse id="basic-navbar-nav ">
                     <Nav>
+
+                    <NavLink to={'/'} className={'nav-link fw-bold ml-2 textbrand'}>
+                            <CiHome  /> Accueil
+                        </NavLink>
+
                         <NavLink to={'/Suivi'} className={'nav-link fw-bold ml-2 textbrand'}>
                             <CiUnread /> Suivi de commande
                         </NavLink>

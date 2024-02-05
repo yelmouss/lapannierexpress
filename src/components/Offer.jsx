@@ -4,6 +4,7 @@ import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { BsFillSuitHeartFill, BsSuitHeart } from 'react-icons/bs';
 import { useCartLikesContext } from './CartLikesContext';
+import { Fade } from 'react-awesome-reveal';
 
 function Offer() {
   const { id } = useParams();
@@ -126,11 +127,15 @@ function Offer() {
         <hr />
         <Col md={6} className=' p-2 d-flex justify-content-center' >
           <div className="card p-3">
+            <Fade direction='down'>
             <Image src={offre.imageUrl} alt={offre.name} fluid className='OfferImage shadow-lg moving-left rounded' />
+
+            </Fade>
 
           </div>
         </Col>
         <Col md={6} className='p-2'>
+        <Fade direction='right'>
         <Col className='d-flex justify-content-center align-items-center'>
             <h2 className="text-success fst-italic">Prix unité <strong>{offre.prixUnite}</strong> MAD</h2>
           </Col>
@@ -178,7 +183,7 @@ function Offer() {
 
           </div>
 
-
+          </Fade>
         </Col>
       </Row>
     </Container>

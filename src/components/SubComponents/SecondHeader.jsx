@@ -157,13 +157,12 @@ function SecondHeader() {
         }}
       />
 
-      <Container className=''
-        fluid >
-        <Container fluid>
+      <Container>
+        <Container >
           <CustomScroll>
-            <Fade direction='up' >
-              <Container className='p-4  ' fluid>
-                <Slider {...settings} >
+            <Fade direction='up' className='' >
+              <Container className='p-4   ' fluid>
+                <Slider {...settings} className='' >
                   {Cat.map((item, index) => (
                     <>
                       <div className="bouncy" key={index}>

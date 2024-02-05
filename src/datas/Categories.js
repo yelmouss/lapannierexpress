@@ -12,7 +12,7 @@ export const Cat = [
     // },
     {
         id: 3,
-        title: 'Réveillons',
+        title: 'Evénements',
         ImageUrl: 'https://iod.keplrstatic.com/api/x_1650,y_724,w_3939,h_3944,c_crop/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/HEADER_FESTIF_MON_MARCHE.jpg'
     },
     {
@@ -42,7 +42,7 @@ export const Cat = [
     },
     {
         id: 10,
-        title: 'Charcuterie',
+        title: 'Volailles',
         ImageUrl: 'https://iod.keplrstatic.com/api/ar_1,c_crop,g_north/c_fill,dpr_auto,f_auto,q_70,w_200/mon_marche/CharcuterieJAMBON_BLANCbig.jpg'
     },
     {

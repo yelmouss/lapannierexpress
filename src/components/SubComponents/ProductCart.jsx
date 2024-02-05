@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { BsFillSuitHeartFill, BsSuitHeart } from 'react-icons/bs';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { MdAddShoppingCart } from 'react-icons/md';
+import { Fade } from 'react-awesome-reveal';
 
 const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleAddToCart, cart }) => {
   // Add null checks for existingCartItem and itemQuantity
@@ -12,15 +13,15 @@ const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleA
 
   return (
     <Col key={product._id}>
-      <Card className="text-center mb-2 shadow-lg" style={{ width: '100%' }}>
+      <Fade direction='left'>
+      <Card className="text-center mb-2 shadow-lg " style={{ width: '100%' }}>
         <NavLink to={'/offre/' + product._id} className={'nav-link'}>
           <Card.Img variant="top" src={product.imageUrl} style={{ width: '100%', height: '150px', objectFit: 'cover' }} />
-          <Card.Footer className="text-muted text-truncate">{product.name}</Card.Footer>
+          <Card.Footer className="text-muted text-truncate ">{product.name}</Card.Footer>
         </NavLink>
 
-        {itemQuantity > 0 && (
-          <Card.Footer className="text-muted text-truncate"> درهم - {product.prixUnite} - MAD</Card.Footer>
-        )}
+          <Card.Footer className="text-muted text-truncate " > درهم - {product.prixUnite} - MAD</Card.Footer>
+       
 
         <Card.Footer className="text-muted">
           {itemQuantity > 0 && (
@@ -42,7 +43,7 @@ const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleA
             </Row>
           )}
 
-          <Card.Footer className="text-muted text-truncate"> درهم - {product.prixUnite} - MAD</Card.Footer>
+          {/* <Card.Footer className="text-muted text-truncate productCard"> درهم - {product.prixUnite} - MAD</Card.Footer> */}
 
           {!itemQuantity && (
             <Row className="align-items-center fs-4">
@@ -69,6 +70,8 @@ const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleA
           )}
         </Card.Footer>
       </Card>
+      </Fade>
+    
     </Col>
   );
 };
