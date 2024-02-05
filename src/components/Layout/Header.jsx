@@ -37,7 +37,7 @@ function Header() {
 
     return (
         <Navbar expand="lg" className="bgBrand2 text-light sticky-top textbrand" sticky="top">
-            <Container fluid>
+            <Container >
                 <NavLink to="/" className={'nav-brand'}>
                     <img
                        src={Logo}
@@ -66,8 +66,8 @@ function Header() {
 
                 </Navbar.Collapse>
                 <Nav>
-                    <NavLink to={'cart'} className={'nav-link fw-bold ml-auto fs-5 textbrand'}>
-                        <CiShoppingCart className='textbrand fw-bold fs-2' /> Panier {" "}
+                    <NavLink to={'cart'} className={'nav-link fw-bold fs-5 textbrand'}>
+                        <CiShoppingCart className='textbrand fw-bold fs-2' />  Panier {" "}
                         {cartCount > 0 && (
                             <span className="badge bg-danger rounded-pill position-absolute top-5 translate-middle">
                                 {cartCount}
@@ -77,7 +77,7 @@ function Header() {
                 </Nav>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
-                    <CiCircleChevDown />
+                    <CiCircleChevDown />  Menu
                 </Navbar.Toggle>
             </Container>
         </Navbar>

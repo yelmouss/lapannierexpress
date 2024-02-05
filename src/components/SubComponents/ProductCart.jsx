@@ -14,13 +14,13 @@ const ProductCart = ({ product, likes, handleLike, handleRemoveFromCart, handleA
   return (
     <Col key={product._id}>
       <Fade direction='left'>
-      <Card className="text-center mb-2 shadow-lg " style={{ width: '100%' }}>
+      <Card className="text-center mb-2 shadow-lg bg-light bg-opacity-25  " style={{ width: '100%' }}>
         <NavLink to={'/offre/' + product._id} className={'nav-link'}>
           <Card.Img variant="top" src={product.imageUrl} style={{ width: '100%', height: '150px', objectFit: 'cover' }} />
-          <Card.Footer className="text-muted text-truncate ">{product.name}</Card.Footer>
+          <Card.Footer className="text-muted text-truncate  ">{product.name}</Card.Footer>
         </NavLink>
 
-          <Card.Footer className="text-muted text-truncate " > درهم - {product.prixUnite} - MAD</Card.Footer>
+          <Card.Footer className="text-muted text-truncate  " > درهم - {product.prixUnite} - MAD</Card.Footer>
        
 
         <Card.Footer className="text-muted">

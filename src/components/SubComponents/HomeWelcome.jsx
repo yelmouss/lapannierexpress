@@ -143,10 +143,10 @@ function HomeWelcome() {
                                 <Row xs={2} lg={5} md={3} className='d-flex align-items-stretch'>
                                     {categoriesWithProducts.map((item, index) => (
                                         <Fade direction='down' key={index}>
-                                            <Col className='mb-1 d-flex' style={{ height: '100%' }}>
+                                            <Col className='mb-1 d-flex'>
                                                 <Link
                                                     className='mb-1 B89  textbrand d-flex align-items-center justify-content-center w-100 fs-4 bouncy rounded'
-                                                    style={{ textDecoration: 'none', height: '100%' }}
+                                                    style={{ textDecoration: 'none' }}
                                                     to={'#' + item.title}
                                                     onClick={() => scrollIntoView(index)}
                                                 >

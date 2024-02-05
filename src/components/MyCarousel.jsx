@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 
-import LeProd from '../img/LES_PRODUITS_GRAND_FRAIS.webp';
+import LeProd from '../img/LES_PRODUITS_GRAND_FRAIS.png';
 import Livraison from '../img/livraison77.webp';
-import Panier from '../img/Panier_gourmands_3.webp';
+import Panier from '../img/Panier_gourmands_3.png';
 import { Fade } from 'react-awesome-reveal';
 
 function MyCarousel() {
@@ -29,13 +29,14 @@ function MyCarousel() {
         <>
         <Fade direction='left'>
 
-        <Carousel className="bg-white" controls={false} indicators={false} >
-            <Carousel.Item>
+        <Carousel controls={false} indicators={false} >
+            <Carousel.Item >
                 <img
                     className={imageClassName}
                     src={LeProd}
                     style={{ height: imageStyle }}
-                    alt="First slide" />
+                  
+                    alt="First slide " />
             </Carousel.Item>
           
             <Carousel.Item>

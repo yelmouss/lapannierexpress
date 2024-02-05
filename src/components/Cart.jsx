@@ -162,10 +162,6 @@ function Cart() {
         }
     };
 
-    // ...
-
-
-    // ...
 
     const sendEmail = async (clientEmail, orderId, formData) => {
         const element = document.getElementById('MyPdf');
@@ -231,9 +227,11 @@ function Cart() {
 
     return (
         <>
+         
             <Container className='p-2'>
+                
                 <Row className='text-end p-5' xs={1} md={1} lg={1}>
-                <h2 className='fs-1 text-success fw-bold text-center'>Mon Panier    <span className='fs-2 text-success text-end' > Total : {calculateTotalPrice()} MAD </span></h2>
+                    <h2 className='fs-1 text-success fw-bold text-center'>Mon Panier <span className='fs-2 text-success text-end'> Total : {calculateTotalPrice()} MAD </span></h2>
                     <Col className=' mt-2 text-center  d-flex align-items-center flex-column'>
                         {!isSubmitting && (
                             <CheckoutForm
@@ -249,55 +247,57 @@ function Cart() {
                             </>
                         }
                     </Col>
-                    {/* <Col>
-                        <span className='fs-2 text-success text-end' > Total : {calculateTotalPrice()} MAD </span>
-                    </Col> */}
                 </Row>
-                <div className="table-container card p-1" id='MyPdf'>
-                    <h2 className='fs-1 text-success fw-bold text-center'>  <span className='fs-2 text-success text-end' > Total : {calculateTotalPrice()} MAD </span></h2>
+                <div className="table-container card p-1 bgBrand2" id='MyPdf'>
+                    <h2 className='fs-1 text-success fw-bold text-center'> <span className='fs-2 text-success text-end'> Total : {calculateTotalPrice()} MAD </span></h2>
                     <hr className='style-seven' />
-                    <p className='text-center fw-bold'>Produits ajoutés: {calculateTotalProducts()}</p>
-                    <Table striped hover variant="light" className='text-center' >
-                        <thead>
-                            <tr>
-                                <th>Produit</th>
-                                <th>Prix Unité</th>
-                                <th>Prix * Qte (Dh)</th>
-                                <th>Quantité</th>
-                                <th>Annuler </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {isLoading ? (
-                                <tr>
-                                    <td colSpan="5">Chargement en cours...</td>
-                                </tr>
-                            ) : (
-                                cartItems.map((cartItem) => (
-                                    <tr key={cartItem.id}>
-                                        <td>{cartItem.details.name}</td>
-                                        <td>{cartItem.details.prixUnite}</td>
-                                        <td>{cartItem.details.prixUnite * cartItem.quantity}</td>
-                                        <td>
-                                            <AiOutlineMinusCircle className='m-1 text-danger fs-4' onClick={() => updateCartItem(cartItem.id, Math.max(1, cartItem.quantity - 1))} />
-                                            {cartItem.quantity}
-                                            <AiOutlinePlusCircle className='m-1 text-success fs-4' onClick={() => updateCartItem(cartItem.id, cartItem.quantity + 1)} />
-                                        </td>
-                                        <td>
-                                            <CiTrash onClick={() => removeCartItem(cartItem.id)} className='fs-4 text-danger' />
-                                        </td>
+                    {cartItems.length === 0 ? (
+                        <p className='text-center'>Votre panier est vide. Ajoutez des articles avant de passer une commande.</p>
+                    ) : (
+                        <>
+                            <p className='text-center fw-bold'>Produits ajoutés: {calculateTotalProducts()}</p>
+                            <Table striped hover variant="light" className='text-center'>
+                                <thead>
+                                    <tr>
+                                        <th>Produit</th>
+                                        <th>Prix Unité</th>
+                                        <th>Prix * Qte (Dh)</th>
+                                        <th>Quantité</th>
+                                        <th>Annuler </th>
                                     </tr>
-                                ))
-                            )}
-                        </tbody>
-                    </Table>
-                    <hr />
-
+                                </thead>
+                                <tbody>
+                                    {isLoading ? (
+                                        <tr>
+                                            <td colSpan="5">Chargement en cours...</td>
+                                        </tr>
+                                    ) : (
+                                        cartItems.map((cartItem) => (
+                                            <tr key={cartItem.id}>
+                                                <td>{cartItem.details.name}</td>
+                                                <td>{cartItem.details.prixUnite}</td>
+                                                <td>{cartItem.details.prixUnite * cartItem.quantity}</td>
+                                                <td>
+                                                    <AiOutlineMinusCircle className='m-1  fs-4' onClick={() => updateCartItem(cartItem.id, Math.max(1, cartItem.quantity - 1))} />
+                                                    {cartItem.quantity}
+                                                    <AiOutlinePlusCircle className='m-1  fs-4' onClick={() => updateCartItem(cartItem.id, cartItem.quantity + 1)} />
+                                                </td>
+                                                <td>
+                                                    <CiTrash onClick={() => removeCartItem(cartItem.id)} className='fs-4 text-danger' />
+                                                </td>
+                                            </tr>
+                                        ))
+                                    )}
+                                </tbody>
+                            </Table>
+                           
+                        </>
+                    )}
                 </div>
-
             </Container>
         </>
     );
+
 }
 
 export default Cart;

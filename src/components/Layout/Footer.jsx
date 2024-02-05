@@ -2,7 +2,10 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Container, Button } from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { FaArrowAltCircleUp } from "react-icons/fa";
+import { FaArrowAltCircleUp, FaInstagram } from "react-icons/fa";
+import Font from 'react-font';
+import { NavLink } from 'react-router-dom'
+import { CiHeart } from "react-icons/ci";
 
 const position = [33.991980191627185, -6.874611381541911];
 
@@ -28,95 +31,59 @@ function Footer() {
   }, []);
 
 
-return (
-  <>
-    {/* Scroll to Top Button */}
-    <button
-    
-      className={`scroll-top-button btn myseeetext bgBrand  shadow-lg d-flex align-items-center justify-content-center   ${showScrollButton ? 'visible' : 'invisible'}`}
-      onClick={scrollIntoTop}
-    >
-      <FaArrowAltCircleUp  />
-    </button>
-    <footer
-      className={`footer fw-bold p-1 bgBrand  text-success  mt-auto `}
-    >
-      {/* <div className="container-fluid">
-          <div className="row d-flex align-items-center justify-content-center">
-            <div className="col-md-6 col-lg-6 col-xl-6">
-              <Container>
-                <MapContainer
-                  center={position}
-                  zoom={13}
-                  scrollWheelZoom={false}
-                  style={{ height: "250px" }}
-                >
-                  <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  <Marker position={position}>
-                    <Popup>
-                      A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                  </Marker>
-                </MapContainer>
-              </Container>
-            </div>
+  return (
+    <>
+      {/* Scroll to Top Button */}
+      <button
 
-            <div className="col-md-4 col-lg-6  rounded">
-              <hr />
-              <h6 className="text-uppercase font-weight-bold  rounded">
-                Infos Contact
-              </h6>
+        className={`scroll-top-button btn myseeetext bgBrand  shadow-lg d-flex align-items-center justify-content-center   ${showScrollButton ? 'visible' : 'invisible'}`}
+        onClick={scrollIntoTop}
+      >
+        <FaArrowAltCircleUp />
+      </button>
+      <footer
+        className={`footer fw-bold p-1 bgBrand  text-success  mt-auto `}
+      >
+       
+        <div className=" text-center fw-bold  p-2 text-light">
+          <p>   © {new Date().getFullYear()} Copyright |{" "} coupdefood.ma</p>
 
-              <br />
-
-              <div className="text-start">
-                <p>
-                  <i className="fas fa-envelope mr-3"></i> blabla@blabla.com
-                </p>
-                <p>
-                  <i className="fas fa-envelope mr-3"></i>{" "}
-                  blabla.blabla@gmail.com
-                </p>
-                <p>
-                  <i className="fas fa-phone mr-3"></i> + 212 612 000 000
-                </p>
-                <p>
-                  <i className="fas fa-home mr-3"></i> Rabat, Agdal 10095, MA
-                </p>
-              </div>
-            </div>
-          </div>
+          <Font family="Satisfy">
+            <span className="mb-3 mb-md-0">©  made by
+              <NavLink
+                to={'/'}
+                className={'fs-4 myseeetext '}
+                style={{ textDecoration: 'none' }}>
+                {" "}  Yelmouss
+              </NavLink> with <CiHeart /> </span>
+          </Font>
         </div>
-        <hr /> */}
-      <div className=" text-center fw-bold  p-2 text-light">
-        <p>   © {new Date().getFullYear()} Copyright :{" "}</p>
-        
-        <p>Made by <a
-          className="text-warning"
-          target={"_blank"}
-          href="https://yelmouss.vercel.app/"
-          rel="noreferrer"
-        >
-          yelmouss
-        </a>. All rights reserved.</p>
-      </div>
-    </footer>
+      </footer>
 
-    <a
-      href="https://wa.me/212612753603"
-      className="float"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <FaWhatsapp className="my-float" />
-    </a>
+      <a
+        href="https://wa.me/212612753603"
+        className="float"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FaWhatsapp className="my-float" />
+      </a>
+
+      <a
+        href="https://www.instagram.com/coupdefood.ma/"
+        className="float2"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <span className="instagram">
+          <FaInstagram className="my-float2" />
+
+        </span>
+      </a>
 
 
-  </>
-);
+    </>
+  );
 }
 
 export default Footer;
